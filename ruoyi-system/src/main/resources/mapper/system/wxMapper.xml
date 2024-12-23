@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruoyi.system.mapper.wxMapper">
+
+    <resultMap id="newMemoResult" type="newMemo">
+        <result property="openid"       column="openid"      />
+        <result property="intake"       column="intake"      />
+        <result property="milk"         column="milk"      />
+        <result property="vegetables"   column="vegetables"      />
+        <result property="fruits"       column="fruits"      />
+        <result property="grains"       column="grains"      />
+        <result property="potatoes"     column="potatoes"      />
+        <result property="meat"         column="meat"      />
+        <result property="eggs"         column="eggs"      />
+        <result property="meat"         column="meat"      />
+        <result property="soy"          column="soy"      />
+        <result property="oil"          column="oil"      />
+        <result property="timestamp"    column="timestamp"      />
+    </resultMap>
+
+    <!-- 插入语句 -->
+    <insert id="insertIntake" parameterType="newMemo">
+        insert into wx_newmemo(
+        <if test="openid != null and openid != ''">openid,</if>
+        <if test="intake != null and intake != ''">intake,</if>
+        <if test="milk != null and milk != ''">milk,</if>
+        <if test="vegetables != null and vegetables != ''">vegetables,</if>
+        <if test="fruits != null and fruits != ''">fruits,</if>
+        <if test="grains != null and grains != ''">grains,</if>
+        <if test="potatoes != null and potatoes != ''">potatoes,</if>
+        <if test="meat != null and meat != ''">meat,</if>
+        <if test="eggs != null and eggs != ''">eggs,</if>
+        <if test="soy != null and soy != ''">soy,</if>
+        <if test="oil != null and oil != ''">oil,</if>
+        <if test="timestamp != null and timestamp != ''">timestamp</if>
+        )values(
+        <if test="openid != null and openid != ''">#{openid},</if>
+        <if test="intake != null and intake != ''">#{intake},</if>
+        <if test="milk != null and milk != ''">#{milk},</if>
+        <if test="vegetables != null and vegetables != ''">#{vegetables},</if>
+        <if test="fruits != null and fruits != ''">#{fruits},</if>
+        <if test="grains != null and grains != ''">#{grains},</if>
+        <if test="potatoes != null and potatoes != ''">#{potatoes},</if>
+        <if test="meat != null and meat != ''">#{meat},</if>
+        <if test="eggs != null and eggs != ''">#{eggs},</if>
+        <if test="soy != null and soy != ''">#{soy},</if>
+        <if test="oil != null and oil != ''">#{oil},</if>
+        <if test="timestamp != null and timestamp != ''">#{timestamp}</if>
+        )
+    </insert>
+
+    <!-- 插入语句 -->
+    <insert id="insertConsumption" parameterType="Consumption">
+        insert into wx_consumption(
+        <if test="openid != null and openid != ''">openid,</if>
+        <if test="consumption != null and consumption != ''">consumption,</if>
+        <if test="step != null and step != ''">step,</if>
+        <if test="running != null and running != ''">running,</if>
+        <if test="hiking != null and hiking != ''">hiking,</if>
+        <if test="cycling != null and cycling != ''">cycling,</if>
+        <if test="jumping != null and jumping != ''">jumping,</if>
+        <if test="swimming != null and swimming != ''">swimming,</if>
+        <if test="others != null and others != ''">others,</if>
+        <if test="timestamp != null and timestamp != ''">timestamp</if>
+        )values(
+        <if test="openid != null and openid != ''">#{openid},</if>
+        <if test="consumption != null and consumption != ''">#{consumption},</if>
+        <if test="step != null and step != ''">#{step},</if>
+        <if test="running != null and running != ''">#{running},</if>
+        <if test="hiking != null and hiking != ''">#{hiking},</if>
+        <if test="cycling != null and cycling != ''">#{cycling},</if>
+        <if test="jumping != null and jumping != ''">#{jumping},</if>
+        <if test="swimming != null and swimming != ''">#{swimming},</if>
+        <if test="others != null and others != ''">#{others},</if>
+        <if test="timestamp != null and timestamp != ''">#{timestamp}</if>
+        )
+    </insert>
+
+    <select id="getIntake" parameterType="map" resultType="newMemo">
+        SELECT * FROM wx_newmemo
+        WHERE openid = #{openid}
+        <if test="timestamp != null and timestamp != ''">
+            AND DATE(timestamp) = #{timestamp}
+        </if>
+    </select>
+
+    <select id="getConsumption" parameterType="map" resultType="Consumption">
+        SELECT * FROM wx_consumption
+        WHERE openid = #{openid}
+        <if test="timestamp != null and timestamp != ''">
+            AND DATE(timestamp) = #{timestamp}
+        </if>
+    </select>
+
+    <update id="updateIntake" parameterType="newMemo">
+        update wx_newMemo
+        <set>
+            <if test="intake != null and intake != ''">intake=#{intake},</if>
+            <if test="milk != null and milk != ''">milk=#{milk},</if>
+            <if test="vegetables != null and vegetables != ''">vegetables=#{vegetables},</if>
+            <if test="fruits != null and fruits != ''">fruits=#{fruits},</if>
+            <if test="grains != null and grains != ''">grains=#{grains},</if>
+            <if test="potatoes != null and potatoes != ''">potatoes=#{potatoes},</if>
+            <if test="meat != null and meat != ''">meat=#{meat},</if>
+            <if test="eggs != null and eggs != ''">eggs=#{eggs},</if>
+            <if test="soy != null and soy != ''">soy=#{soy},</if>
+            <if test="oil != null and oil != ''">oil=#{oil}</if>
+        </set>
+        where openid = #{openid}
+        AND DATE(timestamp) = #{timestamp}
+    </update>
+
+    <update id="updateConsumption" parameterType="Consumption">
+        update wx_consumption
+        <set>
+            <if test="consumption != null and consumption != ''">consumption=#{consumption},</if>
+            <if test="step != null and step != ''">step=#{step},</if>
+            <if test="running != null and running != ''">running=#{running},</if>
+            <if test="hiking != null and hiking != ''">hiking=#{hiking},</if>
+            <if test="cycling != null and cycling != ''">cycling=#{cycling},</if>
+            <if test="jumping != null and jumping != ''">jumping=#{jumping},</if>
+            <if test="swimming != null and swimming != ''">swimming=#{swimming},</if>
+            <if test="others != null and others != ''">others=#{others}</if>
+        </set>
+        where openid = #{openid}
+        AND DATE(timestamp) = #{timestamp}
+    </update>
+
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.RecipeMapper">
+
+    <!-- Result Map for Recipe with Category -->
+    <resultMap id="RecipeWithCategoryResultMap" type="Recipe">
+        <result property="name" column="name" />
+        <result property="imageUrl" column="image_url" />
+        <result property="calories" column="calories" />
+        <result property="ingredients" column="ingredients" />
+        <result property="category" column="category_name" />
+    </resultMap>
+
+
+
+
+    <!-- Select all recipes with category -->
+    <select id="getAllRecipesWithCategory" resultMap="RecipeWithCategoryResultMap">
+        SELECT  r.name, r.image_url, r.calories, r.ingredients,  c.name AS category_name
+        FROM wx_recipes r
+        JOIN wx_categories c ON r.category_id = c.id
+    </select>
+
+    <!-- Insert a new recipe -->
+    <insert id="insertRecipe" parameterType="Recipe" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO wx_recipes (name, image_url, calories, ingredients)
+        VALUES (#{name}, #{imageUrl}, #{calories}, #{ingredients})
+    </insert>
+
+    <!-- Update a recipe -->
+    <update id="updateRecipe" parameterType="Recipe">
+        UPDATE wx_recipes
+        SET name = #{name},
+        image_url = #{imageUrl},
+        calories = #{calories},
+        ingredients = #{ingredients}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Delete a recipe by ID -->
+    <delete id="deleteRecipeById" parameterType="long">
+        DELETE FROM wx_recipes WHERE id = #{id}
+    </delete>
+</mapper>
