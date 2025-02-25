@@ -129,4 +129,9 @@
         AND DATE(timestamp) = #{timestamp}
     </update>
 
+    <select id="getAllNews" resultType="News">
+        SELECT id, content, title, img
+        FROM wx_news
+    </select>
+
 </mapper>

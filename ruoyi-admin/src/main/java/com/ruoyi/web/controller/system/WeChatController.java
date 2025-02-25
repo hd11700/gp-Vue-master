@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.domain.entity.Consumption;
-import com.ruoyi.common.core.domain.entity.Recipe;
-import com.ruoyi.common.core.domain.entity.SysUser;
-import com.ruoyi.common.core.domain.entity.newMemo;
+import com.ruoyi.common.core.domain.entity.*;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.system.mapper.RecipeMapper;
 import com.ruoyi.system.mapper.wxMapper;
@@ -101,6 +98,9 @@ public class WeChatController extends BaseController
             formattedRecipe.put("calories", recipe.getCalories());
             formattedRecipe.put("ingredients",recipe.getIngredients() );
             formattedRecipe.put("category", recipe.getCategory());
+            formattedRecipe.put("effect", recipe.getEffect());
+            formattedRecipe.put("suitpeople", recipe.getSuitpeople());
+            formattedRecipe.put("make", recipe.getMake());
             formattedRecipes.add(formattedRecipe);
         }
 
@@ -176,6 +176,41 @@ public class WeChatController extends BaseController
     }
 
 
+    @GetMapping("/AllnewMemo")
+    public AjaxResult getAllnewMemo(@RequestParam String openid)
+    {
+        Map<String, Object> params = new HashMap<>();
+        params.put("openid", openid);
+
+        // 查询第一个数据库表的数据
+        List<newMemo> memos = wxMapper.getIntake(params);
+
+        // 查询另一个数据库表的数据
+        List<Consumption> otherDataList = wxMapper.getConsumption(params);
+
+        // 创建一个 Map 来按日期合并结果
+        Map<String, Map<String, Object>> resultMap = new HashMap<>();
+
+        // 合并摄入数据
+        for (newMemo memo : memos) {
+            String date = memo.getTimestamp();
+            resultMap.putIfAbsent(date, new HashMap<>());
+            resultMap.get(date).put("Intake", memo);
+        }
+
+        // 合并消耗数据
+        for (Consumption consumption : otherDataList) {
+            String date = consumption.getTimestamp();
+            resultMap.putIfAbsent(date, new HashMap<>());
+            resultMap.get(date).put("Consumption", consumption);
+        }
+
+        // 将合并后的结果转换为列表
+        List<Map<String, Object>> resultList = new ArrayList<>(resultMap.values());
+
+        return AjaxResult.success(resultList);
+    }
+
     /**
      * 获取微信步数，从微信服务端获取加密数据，解密后返回小程序
      */
@@ -218,5 +253,20 @@ public class WeChatController extends BaseController
             response.put("errmsg", "解密失败: " + e.getMessage());
             return ResponseEntity.status(500).body(response);
         }
+    }
+
+
+    /**
+     * 查询摄入和消耗
+     */
+    @Log(title = "查询摄入和消耗", businessType = BusinessType.INSERT)
+    @GetMapping("/news")
+    public AjaxResult getAllNews()
+    {
+        // 查询新闻数据（假设有对应的 newsMapper 和 News 实体类）
+        List<News> newsList = wxMapper.getAllNews();
+
+        // 直接返回新闻列表（保持与模板一致的返回格式）
+        return AjaxResult.success(newsList);
     }
 }

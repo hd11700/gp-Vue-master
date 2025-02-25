@@ -1,6 +1,7 @@
 package com.ruoyi.system.mapper;
 
 import com.ruoyi.common.core.domain.entity.Consumption;
+import com.ruoyi.common.core.domain.entity.News;
 import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.core.domain.entity.newMemo;
 
@@ -54,5 +55,5 @@ public interface wxMapper {
      */
     public int updateConsumption(Consumption cs);
 
-
+    List<News> getAllNews();
 }

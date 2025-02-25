@@ -11,6 +11,9 @@
         <result property="calories" column="calories" />
         <result property="ingredients" column="ingredients" />
         <result property="category" column="category_name" />
+        <result property="effect" column="effect" />
+        <result property="suitpeople" column="suitpeople" />
+        <result property="make" column="make" />
     </resultMap>
 
 
@@ -18,7 +21,7 @@
 
     <!-- Select all recipes with category -->
     <select id="getAllRecipesWithCategory" resultMap="RecipeWithCategoryResultMap">
-        SELECT  r.name, r.image_url, r.calories, r.ingredients,  c.name AS category_name
+        SELECT  r.name, r.image_url, r.calories, r.ingredients,  c.name AS category_name,r.effect,r.suitpeople,r.make
         FROM wx_recipes r
         JOIN wx_categories c ON r.category_id = c.id
     </select>

@@ -7,6 +7,9 @@ public class Recipe {
     private Integer calories;
     private String ingredients;
     private String category;
+    private String effect;
+    private String suitpeople;
+    private String make;
 
     public String getCategory() {
         return category;
@@ -54,5 +57,29 @@ public class Recipe {
 
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public void setEffect(String effect) {
+        this.effect = effect;
+    }
+
+    public String getSuitpeople() {
+        return suitpeople;
+    }
+
+    public void setSuitpeople(String suitpeople) {
+        this.suitpeople = suitpeople;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
     }
 }
