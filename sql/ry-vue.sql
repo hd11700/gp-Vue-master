@@ -11,7 +11,7 @@
  Target Server Version : 80403 (8.4.3)
  File Encoding         : 65001
 
- Date: 23/12/2024 14:40:56
+ Date: 25/02/2025 12:01:03
 */
 
 SET NAMES utf8mb4;
@@ -1032,13 +1032,19 @@ CREATE TABLE `wx_categories`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wx_categories
 -- ----------------------------
-INSERT INTO `wx_categories` VALUES (1, '中式菜肴');
-INSERT INTO `wx_categories` VALUES (2, '西式菜肴');
+INSERT INTO `wx_categories` VALUES (1, '川菜 ');
+INSERT INTO `wx_categories` VALUES (2, '粤菜');
+INSERT INTO `wx_categories` VALUES (3, '湘菜');
+INSERT INTO `wx_categories` VALUES (4, '鲁菜');
+INSERT INTO `wx_categories` VALUES (5, '苏菜');
+INSERT INTO `wx_categories` VALUES (6, '浙菜');
+INSERT INTO `wx_categories` VALUES (7, '闽菜');
+INSERT INTO `wx_categories` VALUES (8, '徽菜');
 
 -- ----------------------------
 -- Table structure for wx_consumption
@@ -1091,6 +1097,24 @@ INSERT INTO `wx_newmemo` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '1023', '50', '
 INSERT INTO `wx_newmemo` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '169', '50', '100', '100', '25', '0', '0', '0', '0', '0', '2024-12-20');
 
 -- ----------------------------
+-- Table structure for wx_news
+-- ----------------------------
+DROP TABLE IF EXISTS `wx_news`;
+CREATE TABLE `wx_news`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wx_news
+-- ----------------------------
+INSERT INTO `wx_news` VALUES (1, '减肥时的饮食搭配至关重要，以下是一些建议', '控制热量摄入\r\n- 了解食物热量，计算个人每日所需热量，一般成年女性每天 1200 - 1500 千卡，成年男性 1500 - 1800 千卡，以此为基础合理安排饮食，制造热量缺口。\r\n保证营养均衡\r\n- 增加蔬果摄入：它们富含维生素、矿物质和膳食纤维，且热量低。如苹果、橙子、菠菜、西兰花等，可增加饱腹感，减少其他高热量食物摄入。\r\n- 保证蛋白质摄入：蛋白质是减肥期间的重要营养素，可选鸡胸肉、鱼肉、虾、豆类、蛋类、奶制品等优质蛋白，既能增加饱腹感，又有助于维持肌肉量。\r\n- 选择全谷物：用糙米、燕麦片、全麦面包等全谷物替代部分精细米面，其富含膳食纤维，消化吸收慢，能提供持久能量。\r\n合理安排餐次和饮食时间\r\n- 少食多餐，每天安排 4 - 6 餐，包括正餐和健康零食，如水果、酸奶、坚果等，避免过度饥饿或暴饮暴食。\r\n- 规律饮食时间，早餐在 7 - 9 点，午餐 12 - 14 点，晚餐 18 - 20 点，助于维持稳定的新陈代谢。\r\n控制食物分量和烹饪方式\r\n- 用小盘子、小碗控制食物分量，每餐七八分饱。\r\n- 多采用清蒸、水煮、烤、炖等烹饪方式，少用油炸、油煎，减少油脂使用，降低热量。如清蒸鱼、水煮鸡胸肉、烤蔬菜等。', 'http://localhost:8080/减肥时的饮食.jpg');
+INSERT INTO `wx_news` VALUES (2, '减脂期科学饮食结构/巨掉秤的万能搭配公式', '健康减肥饮食每日摄入占比\r\n🥦纤维膳食	45%\r\n🌽碳水25%\r\n🍤蛋白质30%\r\n不吃碳水≠瘦\r\n减肥≠不吃碳水\r\n	\r\n膳食万能搭配公式\r\n🍳早餐:优质碳水+蛋白质+膳食纤维\r\n🍛午餐:优质碳水+蛋白质十膳食纤维\r\n🥗晚餐:蛋白质+膳食纤维\r\n	\r\n优质碳水\r\n红薯   紫薯    南瓜    魔芋   芋头\r\n山药   玉米    莲藕    土豆    糙米\r\n薏米   紫米    杂粮    荞麦    小米\r\n意面   燕麦    全麦制品馒头面包\r\n	\r\n蛋白质\r\n鸡蛋    牛奶    豆浆   豆腐    虾仁\r\n牛肉    鸡肉    里脊   排骨    鸭肉\r\n羊肉    鱼肉\r\n一定是瘦肉，禽类去皮\r\n	\r\n膳食纤维\r\n西蓝花   花菜   菠菜  生菜\r\n紫甘蓝   白菜   芦笋   冬瓜\r\n卷心菜   西芹   秋葵   木耳\r\n荷兰豆   黄瓜   菜椒   苦瓜\r\n胡萝卜   蘑菇   洋葱   青菜\r\n	\r\n膳食纤维\r\n圣女果   橘子   蓝莓   草莓\r\n火龙果   橙子   苹果   柚子\r\n猕猴桃   桃子   柠檬   樱桃\r\n番石榴   菠萝   木瓜   枇杷\r\n无花果   梨\r\n	\r\n⚠️注意事项\r\n1️⃣每餐不要吃太饱，吃七分饱。\r\n2️⃣每餐最后吃碳水。\r\n3️⃣吃饭速度不要太快，尽量细嚼慢咽。\r\n4️⃣每日保证饮水200ML。\r\n5️⃣身体不舒服，马上及时停止。\r\n	\r\n希望减肥的姐妹们都可以看到，少走弯路，健康减肥❗\r\n大家都是怎么搭配饮食的(●.●)❓❓', 'http://localhost:8080/减脂期科学饮食结构.jpg');
+
+-- ----------------------------
 -- Table structure for wx_recipes
 -- ----------------------------
 DROP TABLE IF EXISTS `wx_recipes`;
@@ -1101,16 +1125,47 @@ CREATE TABLE `wx_recipes`  (
   `calories` int NULL DEFAULT NULL,
   `ingredients` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `category_id` int NULL DEFAULT NULL,
+  `effect` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `suitpeople` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `make` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id` ASC) USING BTREE,
   CONSTRAINT `wx_recipes_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `wx_categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wx_recipes
 -- ----------------------------
-INSERT INTO `wx_recipes` VALUES (1, '宫保鸡丁', 'https://5b0988e595225.cdn.sohucs.com/images/20180101/de2d7861818c40628915e7f4140a891c.jpeg', 500, '鸡肉、花生、辣椒', 1);
-INSERT INTO `wx_recipes` VALUES (2, '意大利面', 'https://img1.baidu.com/it/u=862862660,660358202&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500://img2.baidu.com/it/u=3616759465,2727399041&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=375&amp;h=500', 400, '意大利面、番茄酱、牛肉', 2);
+INSERT INTO `wx_recipes` VALUES (1, '宫保鸡丁', 'http://localhost:8080/鸡汤.jpeg', 500, '鸡肉、花生、辣椒', 1, '补充蛋白质、增强免疫力和促进消化', '减肥', '将鸡胸肉切丁腌制，花生炒熟备用。炒鸡丁至变色后备用，再炒香干辣椒和姜蒜，加入鸡丁、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
+INSERT INTO `wx_recipes` VALUES (2, '红烧肉', 'http://localhost:8080/红烧肉.jpeg', 600, '五花肉、酱油、糖', 2, '补充能量、滋补身体', '一般人群', '将五花肉切块，焯水后捞出。锅中放油，加入糖炒至焦糖色，加入肉块翻炒，加入酱油和水，炖煮至肉软烂。');
+INSERT INTO `wx_recipes` VALUES (3, '麻婆豆腐', 'http://localhost:8080/麻婆豆腐.jpeg', 350, '豆腐、牛肉末、辣椒', 3, '开胃、促进消化', '一般人群', '豆腐切块焯水备用。锅中放油，炒香牛肉末，加入辣椒和豆瓣酱炒香，加入豆腐翻炒，最后加水淀粉勾芡。');
+INSERT INTO `wx_recipes` VALUES (4, '鱼香肉丝', 'http://localhost:8080/鱼香肉丝.jpeg', 400, '猪肉、胡萝卜、青椒', 4, '开胃、促进食欲', '一般人群', '猪肉切丝腌制，胡萝卜和青椒切丝。锅中放油，炒香肉丝，加入胡萝卜和青椒翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (5, '糖醋排骨', 'http://localhost:8080/糖醋排骨.jpeg', 450, '排骨、糖、醋', 5, '开胃、补钙', '一般人群', '排骨焯水后捞出。锅中放油，加入糖炒至焦糖色，加入排骨翻炒，加入醋和水，炖煮至排骨软烂。');
+INSERT INTO `wx_recipes` VALUES (6, '清蒸鲈鱼', 'http://localhost:8080/清蒸鲈鱼.jpeg', 300, '鲈鱼、姜、葱', 6, '补充蛋白质、益智', '一般人群', '鲈鱼洗净，放入姜葱，蒸锅中蒸熟，淋上热油和酱油即可。');
+INSERT INTO `wx_recipes` VALUES (7, '酸辣土豆丝', 'http://localhost:8080/酸辣土豆丝.jpeg', 200, '土豆、辣椒、醋', 7, '开胃、促进消化', '一般人群', '土豆切丝焯水，锅中放油，炒香辣椒，加入土豆丝翻炒，加入醋和调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (8, '西红柿炒鸡蛋', 'http://localhost:8080/西红柿炒鸡蛋.jpeg', 250, '鸡蛋、西红柿', 8, '补充维生素、提高免疫力', '一般人群', '鸡蛋打散炒熟备用。锅中放油，炒香西红柿，加入鸡蛋翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (9, '宫保虾球', 'http://localhost:8080/宫保虾球.jpeg', 400, '虾仁、花生、辣椒', 1, '补充蛋白质、增强免疫力', '一般人群', '虾仁腌制，花生炒熟备用。炒虾仁至变色后备用，再炒香干辣椒和姜蒜，加入虾仁、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
+INSERT INTO `wx_recipes` VALUES (10, '辣子鸡', 'http://localhost:8080/辣子鸡.jpeg', 500, '鸡肉、辣椒、花椒', 2, '开胃、促进食欲', '一般人群', '鸡肉切块腌制，锅中放油，炒香辣椒和花椒，加入鸡肉翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (11, '水煮鱼', 'http://localhost:8080/水煮鱼.jpeg', 550, '鱼片、辣椒、豆芽', 3, '开胃、补充蛋白质', '一般人群', '鱼片腌制，锅中放油，炒香辣椒，加入水煮开，加入鱼片和豆芽煮熟。');
+INSERT INTO `wx_recipes` VALUES (12, '干锅花菜', 'http://localhost:8080/干锅花菜.jpeg', 300, '花菜、五花肉、辣椒', 4, '开胃、促进消化', '一般人群', '花菜焯水，五花肉切片。锅中放油，炒香五花肉，加入辣椒和花菜翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (13, '红烧茄子', 'http://localhost:8080/红烧茄子.jpeg', 350, '茄子、酱油、糖', 5, '开胃、促进消化', '一般人群', '茄子切块，锅中放油，炒香茄子，加入酱油和糖翻炒，加入水炖煮至茄子软烂。');
+INSERT INTO `wx_recipes` VALUES (14, '蒜蓉西兰花', 'http://localhost:8080/蒜蓉西兰花.jpeg', 200, '西兰花、蒜', 6, '补充维生素、提高免疫力', '一般人群', '西兰花焯水，锅中放油，炒香蒜蓉，加入西兰花翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (15, '香菇炖鸡', 'http://localhost:8080/香菇炖鸡.jpeg', 400, '鸡肉、香菇、姜', 7, '补充蛋白质、滋补身体', '一般人群', '鸡肉切块，香菇泡发。锅中放油，炒香姜片，加入鸡肉和香菇翻炒，加入水炖煮至鸡肉熟烂。');
+INSERT INTO `wx_recipes` VALUES (16, '豆豉蒸排骨', 'http://localhost:8080/豆豉蒸排骨.jpeg', 450, '排骨、豆豉、辣椒', 8, '开胃、补钙', '一般人群', '排骨腌制，加入豆豉和辣椒，蒸锅中蒸熟。');
+INSERT INTO `wx_recipes` VALUES (17, '葱爆羊肉', 'http://localhost:8080/葱爆羊肉.jpeg', 500, '羊肉、葱', 1, '补充蛋白质、滋补身体', '一般人群', '羊肉切片腌制，锅中放油，炒香葱段，加入羊肉翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (18, '鱼香茄子', 'http://localhost:8080/鱼香茄子.jpeg', 350, '茄子、辣椒、酱油', 2, '开胃、促进食欲', '一般人群', '茄子切块，锅中放油，炒香辣椒，加入茄子翻炒，加入酱油和调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (19, '宫保豆腐', 'http://localhost:8080/宫保豆腐.jpeg', 300, '豆腐、花生、辣椒', 3, '补充蛋白质、增强免疫力', '一般人群', '豆腐切块，花生炒熟备用。炒豆腐至金黄后备用，再炒香干辣椒和姜蒜，加入豆腐、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
+INSERT INTO `wx_recipes` VALUES (20, '香辣虾', 'http://localhost:8080/香辣虾.jpeg', 400, '虾、辣椒、花椒', 4, '开胃、补充蛋白质', '一般人群', '虾去壳腌制，锅中放油，炒香辣椒和花椒，加入虾翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (21, '红烧狮子头', 'http://localhost:8080/红烧狮子头.jpeg', 500, '猪肉、酱油、糖', 5, '补充能量、滋补身体', '一般人群', '猪肉剁成肉馅，加入调料搅拌均匀，捏成肉丸。锅中放油，煎至金黄，加入酱油和糖炖煮。');
+INSERT INTO `wx_recipes` VALUES (22, '蒜蓉粉丝蒸扇贝', 'http://localhost:8080/蒜蓉粉丝蒸扇贝.jpeg', 300, '扇贝、粉丝、蒜', 6, '补充蛋白质、提高免疫力', '一般人群', '扇贝洗净，粉丝泡软。蒜蓉炒香，加入扇贝和粉丝，蒸锅中蒸熟。');
+INSERT INTO `wx_recipes` VALUES (23, '酸菜鱼', 'http://localhost:8080/酸菜鱼.jpeg', 550, '鱼片、酸菜、辣椒', 7, '开胃、补充蛋白质', '一般人群', '鱼片腌制，锅中放油，炒香酸菜和辣椒，加入水煮开，加入鱼片煮熟。');
+INSERT INTO `wx_recipes` VALUES (24, '宫保鸡翅', 'http://localhost:8080/宫保鸡翅.jpeg', 500, '鸡翅、花生、辣椒', 8, '补充蛋白质、增强免疫力', '一般人群', '鸡翅腌制，花生炒熟备用。炒鸡翅至变色后备用，再炒香干辣椒和姜蒜，加入鸡翅、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
+INSERT INTO `wx_recipes` VALUES (25, '香煎豆腐', 'http://localhost:8080/香煎豆腐.jpeg', 250, '豆腐、酱油、葱', 1, '补充蛋白质、提高免疫力', '一般人群', '豆腐切块，锅中放油，煎至金黄，加入酱油和葱花翻炒。');
+INSERT INTO `wx_recipes` VALUES (26, '红烧鸡翅', 'http://localhost:8080/红烧鸡翅.jpeg', 450, '鸡翅、酱油、糖', 2, '补充蛋白质、滋补身体', '一般人群', '鸡翅焯水后捞出。锅中放油，加入糖炒至焦糖色，加入鸡翅翻炒，加入酱油和水，炖煮至鸡翅软烂。');
+INSERT INTO `wx_recipes` VALUES (27, '蒜蓉蒸茄子', 'http://localhost:8080/蒜蓉蒸茄子.jpeg', 200, '茄子、蒜', 3, '补充维生素、提高免疫力', '一般人群', '茄子切块，蒜蓉炒香，加入茄子，蒸锅中蒸熟。');
+INSERT INTO `wx_recipes` VALUES (28, '宫保牛肉', 'http://localhost:8080/宫保牛肉.jpeg', 500, '牛肉、花生、辣椒', 4, '补充蛋白质、增强免疫力', '一般人群', '牛肉切片腌制，花生炒熟备用。炒牛肉至变色后备用，再炒香干辣椒和姜蒜，加入牛肉、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
+INSERT INTO `wx_recipes` VALUES (29, '香辣鸡翅', 'http://localhost:8080/香辣鸡翅.jpeg', 500, '鸡翅、辣椒、花椒', 5, '开胃、补充蛋白质', '一般人群', '鸡翅腌制，锅中放油，炒香辣椒和花椒，加入鸡翅翻炒，加入调料炒匀。');
+INSERT INTO `wx_recipes` VALUES (30, '红烧豆腐', 'http://localhost:8080/红烧豆腐.jpeg', 300, '豆腐、酱油、糖', 6, '补充蛋白质、促进消化', '一般人群', '豆腐切块，锅中放油，炒香豆腐，加入酱油和糖翻炒，加入水炖煮至豆腐软烂。');
 
 -- ----------------------------
 -- Table structure for wx_solarterms
