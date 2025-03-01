@@ -11,7 +11,7 @@
  Target Server Version : 80403 (8.4.3)
  File Encoding         : 65001
 
- Date: 25/02/2025 12:01:03
+ Date: 01/03/2025 14:31:21
 */
 
 SET NAMES utf8mb4;
@@ -349,7 +349,7 @@ CREATE TABLE `sys_dept`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -364,6 +364,7 @@ INSERT INTO `sys_dept` VALUES (106, 101, '0,100,101', '财务部门', 4, '若依
 INSERT INTO `sys_dept` VALUES (107, 101, '0,100,101', '运维部门', 5, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2024-11-27 15:51:22', '', NULL);
 INSERT INTO `sys_dept` VALUES (108, 102, '0,100,102', '市场部门', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2024-11-27 15:51:22', '', NULL);
 INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部门', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2024-11-27 15:51:22', '', NULL);
+INSERT INTO `sys_dept` VALUES (200, 100, '0,100', '营养师', 1, NULL, NULL, NULL, '0', '0', 'admin', '2025-02-28 16:53:16', '', NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_data
@@ -517,7 +518,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 187 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 211 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -609,6 +610,30 @@ INSERT INTO `sys_logininfor` VALUES (183, 'admin', '172.16.9.12', '内网IP', 'M
 INSERT INTO `sys_logininfor` VALUES (184, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-12-16 10:37:24');
 INSERT INTO `sys_logininfor` VALUES (185, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-12-16 10:37:28');
 INSERT INTO `sys_logininfor` VALUES (186, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-16 10:37:33');
+INSERT INTO `sys_logininfor` VALUES (187, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-02-26 11:43:02');
+INSERT INTO `sys_logininfor` VALUES (188, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 11:43:08');
+INSERT INTO `sys_logininfor` VALUES (189, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 12:27:27');
+INSERT INTO `sys_logininfor` VALUES (190, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 14:06:04');
+INSERT INTO `sys_logininfor` VALUES (191, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-02-26 14:29:55');
+INSERT INTO `sys_logininfor` VALUES (192, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 14:33:22');
+INSERT INTO `sys_logininfor` VALUES (193, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-02-26 14:40:08');
+INSERT INTO `sys_logininfor` VALUES (194, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 14:40:14');
+INSERT INTO `sys_logininfor` VALUES (195, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 17:05:10');
+INSERT INTO `sys_logininfor` VALUES (196, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 18:05:22');
+INSERT INTO `sys_logininfor` VALUES (197, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-26 20:01:57');
+INSERT INTO `sys_logininfor` VALUES (198, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-27 10:28:47');
+INSERT INTO `sys_logininfor` VALUES (199, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-27 12:06:45');
+INSERT INTO `sys_logininfor` VALUES (200, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-27 14:29:21');
+INSERT INTO `sys_logininfor` VALUES (201, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-27 15:27:42');
+INSERT INTO `sys_logininfor` VALUES (202, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-02-27 16:13:30');
+INSERT INTO `sys_logininfor` VALUES (203, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-27 16:13:35');
+INSERT INTO `sys_logininfor` VALUES (204, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-28 09:54:14');
+INSERT INTO `sys_logininfor` VALUES (205, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-28 14:37:05');
+INSERT INTO `sys_logininfor` VALUES (206, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-02-28 16:30:38');
+INSERT INTO `sys_logininfor` VALUES (207, 'ccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2025-02-28 16:37:35');
+INSERT INTO `sys_logininfor` VALUES (208, 'ccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2025-02-28 16:37:44');
+INSERT INTO `sys_logininfor` VALUES (209, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-01 13:56:32');
+INSERT INTO `sys_logininfor` VALUES (210, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-01 13:56:38');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -644,11 +669,10 @@ CREATE TABLE `sys_menu`  (
 INSERT INTO `sys_menu` VALUES (1, '系统管理', 0, 1, 'system', NULL, '', '', 1, 0, 'M', '0', '0', '', 'system', 'admin', '2024-11-27 15:51:25', '', NULL, '系统管理目录');
 INSERT INTO `sys_menu` VALUES (2, '系统监控', 0, 2, 'monitor', NULL, '', '', 1, 0, 'M', '0', '0', '', 'monitor', 'admin', '2024-11-27 15:51:25', '', NULL, '系统监控目录');
 INSERT INTO `sys_menu` VALUES (3, '系统工具', 0, 3, 'tool', NULL, '', '', 1, 0, 'M', '0', '0', '', 'tool', 'admin', '2024-11-27 15:51:25', '', NULL, '系统工具目录');
-INSERT INTO `sys_menu` VALUES (4, '若依官网', 0, 4, 'http://ruoyi.vip', NULL, '', '', 0, 0, 'M', '0', '0', '', 'guide', 'admin', '2024-11-27 15:51:25', '', NULL, '若依官网地址');
-INSERT INTO `sys_menu` VALUES (5, '膳食管理', 0, 5, 'http://ruoyi.vip', NULL, NULL, '', 0, 0, 'M', '0', '0', NULL, 'system', 'admin', '2024-11-27 18:26:34', '', NULL, '测试');
-INSERT INTO `sys_menu` VALUES (6, '营养师管理', 0, 6, '', NULL, NULL, '', 1, 0, '', '0', '0', NULL, '#', 'admin', NULL, '', NULL, '');
-INSERT INTO `sys_menu` VALUES (7, '文章管理', 0, 7, '', NULL, NULL, '', 1, 0, '', '0', '0', NULL, '#', 'admin', NULL, '', NULL, '');
-INSERT INTO `sys_menu` VALUES (8, '数据统计与分析', 0, 8, '', NULL, NULL, '', 1, 0, '', '0', '0', NULL, '#', 'admin', NULL, '', NULL, '');
+INSERT INTO `sys_menu` VALUES (4, '数据统计与分析', 0, 4, 'data', 'data/DataAnalysis/index', '', '', 1, 0, 'C', '0', '0', '', 'guide', 'admin', '2024-11-27 15:51:25', '', NULL, '若依官网地址');
+INSERT INTO `sys_menu` VALUES (5, '膳食管理', 0, 5, 'meal', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, 'system', 'admin', '2024-11-27 18:26:34', '', NULL, '测试');
+INSERT INTO `sys_menu` VALUES (6, '营养师管理', 0, 6, 'nutri', 'nutri/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'tool', 'admin', '2024-11-27 18:26:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (7, '文章管理', 0, 7, 'news', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, 'build', 'admin', '2025-02-26 18:26:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (100, '用户管理', 1, 1, 'user', 'system/user/index', '', '', 1, 0, 'C', '0', '0', 'system:user:list', 'user', 'admin', '2024-11-27 15:51:25', '', NULL, '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (101, '角色管理', 1, 2, 'role', 'system/role/index', '', '', 1, 0, 'C', '0', '0', 'system:role:list', 'peoples', 'admin', '2024-11-27 15:51:25', '', NULL, '角色管理菜单');
 INSERT INTO `sys_menu` VALUES (102, '菜单管理', 1, 3, 'menu', 'system/menu/index', '', '', 1, 0, 'C', '0', '0', 'system:menu:list', 'tree-table', 'admin', '2024-11-27 15:51:25', '', NULL, '菜单管理菜单');
@@ -667,8 +691,11 @@ INSERT INTO `sys_menu` VALUES (114, '缓存列表', 2, 6, 'cacheList', 'monitor/
 INSERT INTO `sys_menu` VALUES (115, '表单构建', 3, 1, 'build', 'tool/build/index', '', '', 1, 0, 'C', '0', '0', 'tool:build:list', 'build', 'admin', '2024-11-27 15:51:25', '', NULL, '表单构建菜单');
 INSERT INTO `sys_menu` VALUES (116, '代码生成', 3, 2, 'gen', 'tool/gen/index', '', '', 1, 0, 'C', '0', '0', 'tool:gen:list', 'code', 'admin', '2024-11-27 15:51:25', '', NULL, '代码生成菜单');
 INSERT INTO `sys_menu` VALUES (117, '系统接口', 3, 3, 'swagger', 'tool/swagger/index', '', '', 1, 0, 'C', '0', '0', 'tool:swagger:list', 'swagger', 'admin', '2024-11-27 15:51:25', '', NULL, '系统接口菜单');
-INSERT INTO `sys_menu` VALUES (118, '菜单管理', 6, 1, '', NULL, NULL, '', 1, 0, '', '0', '0', NULL, '#', 'admin', NULL, '', NULL, '');
-INSERT INTO `sys_menu` VALUES (119, '食谱管理', 6, 2, '', NULL, NULL, '', 1, 0, '', '0', '0', NULL, '#', 'admin', NULL, '', NULL, '');
+INSERT INTO `sys_menu` VALUES (118, '菜单管理', 5, 1, '', NULL, NULL, '', 1, 0, '', '0', '0', NULL, '#', 'admin', NULL, '', NULL, '');
+INSERT INTO `sys_menu` VALUES (119, '食谱管理', 5, 2, 'recipes', 'meal/recipes/index', NULL, '', 1, 0, 'C', '0', '0', 'system:recipes:list', 'post', 'admin', '2024-11-27 15:51:25', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (120, '新增食谱', 5, 3, 'addrecipes', 'meal/addrecipes/index', NULL, '', 1, 0, 'C', '0', '0', 'system:addrecipes:list', 'code', 'admin', '2024-11-27 15:51:25', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (121, '所有文章', 7, 1, 'content', 'news/content/index', NULL, '', 1, 0, 'C', '0', '0', 'news:content:list', 'edit', 'admin', '2024-11-27 15:51:25', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (122, '新增文章', 7, 2, 'addcontent', 'news/addcontent/index', NULL, '', 1, 0, 'C', '0', '0', 'news:addcontent:list', 'logininfor', 'admin', '2024-11-27 15:51:25', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (500, '操作日志', 108, 1, 'operlog', 'monitor/operlog/index', '', '', 1, 0, 'C', '0', '0', 'monitor:operlog:list', 'form', 'admin', '2024-11-27 15:51:25', '', NULL, '操作日志菜单');
 INSERT INTO `sys_menu` VALUES (501, '登录日志', 108, 2, 'logininfor', 'monitor/logininfor/index', '', '', 1, 0, 'C', '0', '0', 'monitor:logininfor:list', 'logininfor', 'admin', '2024-11-27 15:51:25', '', NULL, '登录日志菜单');
 INSERT INTO `sys_menu` VALUES (1000, '用户查询', 100, 1, '', '', '', '', 1, 0, 'F', '0', '0', 'system:user:query', '#', 'admin', '2024-11-27 15:51:25', '', NULL, '');
@@ -783,11 +810,19 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 108 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
 -- ----------------------------
+INSERT INTO `sys_oper_log` VALUES (100, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/menu/4', '127.0.0.1', '内网IP', '4', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":601}', 0, NULL, '2025-02-27 11:08:56', 87);
+INSERT INTO `sys_oper_log` VALUES (101, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/menu/4', '127.0.0.1', '内网IP', '4', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":601}', 0, NULL, '2025-02-27 11:09:03', 30);
+INSERT INTO `sys_oper_log` VALUES (102, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2024-11-27 15:51:25\",\"icon\":\"guide\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":4,\"menuName\":\"数据统计与分析\",\"menuType\":\"M\",\"orderNum\":4,\"params\":{},\"parentId\":0,\"path\":\"http://ruoyi.vip\",\"perms\":\"\",\"query\":\"\",\"routeName\":\"\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"修改菜单\'数据统计与分析\'失败，菜单名称已存在\",\"code\":500}', 0, NULL, '2025-02-27 15:54:49', 134);
+INSERT INTO `sys_oper_log` VALUES (103, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.changeStatus()', 'PUT', 1, 'admin', '研发部门', '/system/role/changeStatus', '127.0.0.1', '内网IP', '{\"admin\":false,\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"status\":\"1\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:31:25', 123);
+INSERT INTO `sys_oper_log` VALUES (104, '角色管理', 1, 'com.ruoyi.web.controller.system.SysRoleController.add()', 'POST', 1, 'admin', '研发部门', '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createBy\":\"admin\",\"deptCheckStrictly\":true,\"deptIds\":[],\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[5,118,119,120,7,121,122],\"params\":{},\"roleId\":100,\"roleKey\":\"nutri\",\"roleName\":\"营养师\",\"roleSort\":2,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:35:10', 298);
+INSERT INTO `sys_oper_log` VALUES (105, '用户管理', 1, 'com.ruoyi.web.controller.system.SysUserController.add()', 'POST', 1, 'admin', '研发部门', '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"createBy\":\"admin\",\"nickName\":\"营养师1\",\"params\":{},\"postIds\":[],\"roleIds\":[100],\"status\":\"0\",\"userId\":100,\"userName\":\"ccc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:36:51', 193);
+INSERT INTO `sys_oper_log` VALUES (106, '部门管理', 1, 'com.ruoyi.web.controller.system.SysDeptController.add()', 'POST', 1, 'admin', '研发部门', '/system/dept', '127.0.0.1', '内网IP', '{\"ancestors\":\"0,100\",\"children\":[],\"createBy\":\"admin\",\"deptName\":\"营养师\",\"orderNum\":1,\"params\":{},\"parentId\":100,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:53:16', 167);
+INSERT INTO `sys_oper_log` VALUES (107, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2025-02-28 16:36:51\",\"delFlag\":\"0\",\"deptId\":200,\"email\":\"\",\"loginDate\":\"2025-02-28 16:37:44\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"营养师1\",\"params\":{},\"phonenumber\":\"\",\"postIds\":[],\"roleIds\":[100],\"roles\":[{\"admin\":false,\"dataScope\":\"1\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":100,\"roleKey\":\"nutri\",\"roleName\":\"营养师\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"0\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":100,\"userName\":\"ccc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:54:03', 610);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -835,13 +870,14 @@ CREATE TABLE `sys_role`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2024-11-27 15:51:24', '', NULL, '超级管理员');
-INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 1, 1, '0', '0', 'admin', '2024-11-27 15:51:24', '', NULL, '普通角色');
+INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 0, 0, '1', '0', 'admin', '2024-11-27 15:51:24', 'admin', '2025-02-28 16:31:25', '普通角色');
+INSERT INTO `sys_role` VALUES (100, '营养师', 'nutri', 2, '1', 1, 1, '0', '0', 'admin', '2025-02-28 16:35:10', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -958,6 +994,13 @@ INSERT INTO `sys_role_menu` VALUES (2, 1057);
 INSERT INTO `sys_role_menu` VALUES (2, 1058);
 INSERT INTO `sys_role_menu` VALUES (2, 1059);
 INSERT INTO `sys_role_menu` VALUES (2, 1060);
+INSERT INTO `sys_role_menu` VALUES (100, 5);
+INSERT INTO `sys_role_menu` VALUES (100, 7);
+INSERT INTO `sys_role_menu` VALUES (100, 118);
+INSERT INTO `sys_role_menu` VALUES (100, 119);
+INSERT INTO `sys_role_menu` VALUES (100, 120);
+INSERT INTO `sys_role_menu` VALUES (100, 121);
+INSERT INTO `sys_role_menu` VALUES (100, 122);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -984,13 +1027,15 @@ CREATE TABLE `sys_user`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-12-16 10:37:34', 'admin', '2024-11-27 15:51:23', '', '2024-12-16 10:37:33', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-01 13:56:39', 'admin', '2024-11-27 15:51:23', '', '2025-03-01 13:56:38', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-11-27 15:51:23', 'admin', '2024-11-27 15:51:23', '', NULL, '测试员');
+INSERT INTO `sys_user` VALUES (100, 200, 'ccc', '营养师1', '00', '', '', '0', '', '$2a$10$b7UNoK6uX012DtTOMr7Ftu924o.U7sH0Hwgf0Xz.6EqYLIfpLyfBy', '0', '0', '127.0.0.1', '2025-02-28 16:37:44', 'admin', '2025-02-28 16:36:51', 'admin', '2025-02-28 16:54:03', NULL);
+INSERT INTO `sys_user` VALUES (101, 200, 'c01', 'c', '00', '', 'c', '0', '', '123456', '1', '0', '', NULL, '', '2025-02-28 17:38:31', '', NULL, 'cccc');
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -1023,6 +1068,7 @@ CREATE TABLE `sys_user_role`  (
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (2, 2);
+INSERT INTO `sys_user_role` VALUES (100, 100);
 
 -- ----------------------------
 -- Table structure for wx_categories
