@@ -154,7 +154,7 @@ public class SysUserController extends BaseController
 //            return error("新增用户'" + user.getUserName() + "'失败，邮箱账号已存在");
 //        }
 //        user.setCreateBy(getUsername());
-//        user.setPassword(SecurityUtils.encryptPassword(user.getPassword()));
+        user.setPassword(SecurityUtils.encryptPassword(user.getPassword()));
         return toAjax(userService.insertUser(user));
     }
     /**
