@@ -11,7 +11,7 @@
  Target Server Version : 80403 (8.4.3)
  File Encoding         : 65001
 
- Date: 01/03/2025 14:31:21
+ Date: 20/03/2025 16:29:41
 */
 
 SET NAMES utf8mb4;
@@ -44,7 +44,7 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '代码生成业务表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gen_table
@@ -78,7 +78,7 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gen_table_column
@@ -95,7 +95,7 @@ CREATE TABLE `qrtz_blob_triggers`  (
   `blob_data` blob NULL COMMENT '存放持久化Trigger对象',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_blob_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Blob类型的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Blob类型的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_blob_triggers
@@ -110,7 +110,7 @@ CREATE TABLE `qrtz_calendars`  (
   `calendar_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '日历名称',
   `calendar` blob NOT NULL COMMENT '存放持久化calendar对象',
   PRIMARY KEY (`sched_name`, `calendar_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '日历信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '日历信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_calendars
@@ -128,7 +128,7 @@ CREATE TABLE `qrtz_cron_triggers`  (
   `time_zone_id` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '时区',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_cron_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Cron类型的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Cron类型的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_cron_triggers
@@ -153,7 +153,7 @@ CREATE TABLE `qrtz_fired_triggers`  (
   `is_nonconcurrent` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否并发',
   `requests_recovery` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否接受恢复执行',
   PRIMARY KEY (`sched_name`, `entry_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '已触发的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '已触发的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_fired_triggers
@@ -175,7 +175,7 @@ CREATE TABLE `qrtz_job_details`  (
   `requests_recovery` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '是否接受恢复执行',
   `job_data` blob NULL COMMENT '存放持久化job对象',
   PRIMARY KEY (`sched_name`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务详细信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务详细信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_job_details
@@ -189,7 +189,7 @@ CREATE TABLE `qrtz_locks`  (
   `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
   `lock_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '悲观锁名称',
   PRIMARY KEY (`sched_name`, `lock_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '存储的悲观锁信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '存储的悲观锁信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_locks
@@ -203,7 +203,7 @@ CREATE TABLE `qrtz_paused_trigger_grps`  (
   `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
   `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
   PRIMARY KEY (`sched_name`, `trigger_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '暂停的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '暂停的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_paused_trigger_grps
@@ -219,7 +219,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
   `last_checkin_time` bigint NOT NULL COMMENT '上次检查时间',
   `checkin_interval` bigint NOT NULL COMMENT '检查间隔时间',
   PRIMARY KEY (`sched_name`, `instance_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '调度器状态表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '调度器状态表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_scheduler_state
@@ -238,7 +238,7 @@ CREATE TABLE `qrtz_simple_triggers`  (
   `times_triggered` bigint NOT NULL COMMENT '已经触发的次数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simple_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_simple_triggers
@@ -265,7 +265,7 @@ CREATE TABLE `qrtz_simprop_triggers`  (
   `bool_prop_2` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第二个参数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simprop_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '同步机制的行锁表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '同步机制的行锁表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_simprop_triggers
@@ -295,7 +295,7 @@ CREATE TABLE `qrtz_triggers`  (
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   INDEX `sched_name`(`sched_name` ASC, `job_name` ASC, `job_group` ASC) USING BTREE,
   CONSTRAINT `qrtz_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `job_name`, `job_group`) REFERENCES `qrtz_job_details` (`sched_name`, `job_name`, `job_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '触发器详细信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '触发器详细信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_triggers
@@ -317,7 +317,7 @@ CREATE TABLE `sys_config`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '参数配置表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_config
@@ -349,7 +349,7 @@ CREATE TABLE `sys_dept`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -386,7 +386,7 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -437,7 +437,7 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -472,7 +472,7 @@ CREATE TABLE `sys_job`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job
@@ -495,7 +495,7 @@ CREATE TABLE `sys_job_log`  (
   `exception_info` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job_log
@@ -518,7 +518,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 211 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 293 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -634,6 +634,88 @@ INSERT INTO `sys_logininfor` VALUES (207, 'ccc', '127.0.0.1', '内网IP', 'Chrom
 INSERT INTO `sys_logininfor` VALUES (208, 'ccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2025-02-28 16:37:44');
 INSERT INTO `sys_logininfor` VALUES (209, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-01 13:56:32');
 INSERT INTO `sys_logininfor` VALUES (210, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-01 13:56:38');
+INSERT INTO `sys_logininfor` VALUES (211, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:14:11');
+INSERT INTO `sys_logininfor` VALUES (212, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:14:21');
+INSERT INTO `sys_logininfor` VALUES (213, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:14:48');
+INSERT INTO `sys_logininfor` VALUES (214, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:14:57');
+INSERT INTO `sys_logininfor` VALUES (215, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:15:12');
+INSERT INTO `sys_logininfor` VALUES (216, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2025-03-01 15:17:20');
+INSERT INTO `sys_logininfor` VALUES (217, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2025-03-01 15:17:44');
+INSERT INTO `sys_logininfor` VALUES (218, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2025-03-01 15:18:12');
+INSERT INTO `sys_logininfor` VALUES (219, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-01 15:22:11');
+INSERT INTO `sys_logininfor` VALUES (220, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '密码输入错误5次，帐户锁定10分钟', '2025-03-01 15:22:14');
+INSERT INTO `sys_logininfor` VALUES (221, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-01 15:26:59');
+INSERT INTO `sys_logininfor` VALUES (222, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:27:03');
+INSERT INTO `sys_logininfor` VALUES (223, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:27:16');
+INSERT INTO `sys_logininfor` VALUES (224, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-01 15:27:37');
+INSERT INTO `sys_logininfor` VALUES (225, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-01 15:28:02');
+INSERT INTO `sys_logininfor` VALUES (226, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:28:10');
+INSERT INTO `sys_logininfor` VALUES (227, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2025-03-01 15:28:14');
+INSERT INTO `sys_logininfor` VALUES (228, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:28:17');
+INSERT INTO `sys_logininfor` VALUES (229, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2025-03-01 15:28:21');
+INSERT INTO `sys_logininfor` VALUES (230, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:28:25');
+INSERT INTO `sys_logininfor` VALUES (231, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:28:49');
+INSERT INTO `sys_logininfor` VALUES (232, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:28:52');
+INSERT INTO `sys_logininfor` VALUES (233, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-01 15:29:02');
+INSERT INTO `sys_logininfor` VALUES (234, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-01 15:29:23');
+INSERT INTO `sys_logininfor` VALUES (235, 'hd1', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户已封禁，请联系管理员', '2025-03-01 15:46:05');
+INSERT INTO `sys_logininfor` VALUES (236, 'hd1', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '验证码已失效', '2025-03-01 15:51:49');
+INSERT INTO `sys_logininfor` VALUES (237, 'hd1', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户已封禁，请联系管理员', '2025-03-01 15:51:54');
+INSERT INTO `sys_logininfor` VALUES (238, 'hd1', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2025-03-01 15:52:05');
+INSERT INTO `sys_logininfor` VALUES (239, 'hd1', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2025-03-01 15:56:28');
+INSERT INTO `sys_logininfor` VALUES (240, 'ccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2025-03-01 15:56:34');
+INSERT INTO `sys_logininfor` VALUES (241, 'ccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2025-03-01 16:04:20');
+INSERT INTO `sys_logininfor` VALUES (242, 'hd11', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2025-03-01 16:04:27');
+INSERT INTO `sys_logininfor` VALUES (243, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-01 17:24:02');
+INSERT INTO `sys_logininfor` VALUES (244, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-01 17:24:06');
+INSERT INTO `sys_logininfor` VALUES (245, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-01 17:26:22');
+INSERT INTO `sys_logininfor` VALUES (246, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2025-03-01 17:32:55');
+INSERT INTO `sys_logininfor` VALUES (247, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 11:55:16');
+INSERT INTO `sys_logininfor` VALUES (248, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-03 14:06:32');
+INSERT INTO `sys_logininfor` VALUES (249, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 14:06:34');
+INSERT INTO `sys_logininfor` VALUES (250, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 15:07:09');
+INSERT INTO `sys_logininfor` VALUES (251, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-03 15:07:28');
+INSERT INTO `sys_logininfor` VALUES (252, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 15:07:37');
+INSERT INTO `sys_logininfor` VALUES (253, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-03 15:20:29');
+INSERT INTO `sys_logininfor` VALUES (254, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 15:20:33');
+INSERT INTO `sys_logininfor` VALUES (255, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-03 15:24:34');
+INSERT INTO `sys_logininfor` VALUES (256, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-03 15:24:47');
+INSERT INTO `sys_logininfor` VALUES (257, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 15:25:14');
+INSERT INTO `sys_logininfor` VALUES (258, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-03 15:27:01');
+INSERT INTO `sys_logininfor` VALUES (259, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 15:27:05');
+INSERT INTO `sys_logininfor` VALUES (260, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-03 15:32:16');
+INSERT INTO `sys_logininfor` VALUES (261, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-03 15:32:25');
+INSERT INTO `sys_logininfor` VALUES (262, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-04 15:42:43');
+INSERT INTO `sys_logininfor` VALUES (263, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-05 18:15:55');
+INSERT INTO `sys_logininfor` VALUES (264, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-05 18:16:59');
+INSERT INTO `sys_logininfor` VALUES (265, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-05 18:17:11');
+INSERT INTO `sys_logininfor` VALUES (266, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-05 18:17:33');
+INSERT INTO `sys_logininfor` VALUES (267, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2025-03-05 18:17:39');
+INSERT INTO `sys_logininfor` VALUES (268, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-05 18:17:47');
+INSERT INTO `sys_logininfor` VALUES (269, 'ccc', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-06 17:45:31');
+INSERT INTO `sys_logininfor` VALUES (270, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-06 17:45:43');
+INSERT INTO `sys_logininfor` VALUES (271, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-10 17:20:33');
+INSERT INTO `sys_logininfor` VALUES (272, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-11 14:10:50');
+INSERT INTO `sys_logininfor` VALUES (273, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-11 15:31:10');
+INSERT INTO `sys_logininfor` VALUES (274, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-11 16:33:55');
+INSERT INTO `sys_logininfor` VALUES (275, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-18 10:43:45');
+INSERT INTO `sys_logininfor` VALUES (276, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-18 11:39:45');
+INSERT INTO `sys_logininfor` VALUES (277, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2025-03-18 14:26:47');
+INSERT INTO `sys_logininfor` VALUES (278, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-18 14:26:51');
+INSERT INTO `sys_logininfor` VALUES (279, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-18 15:28:12');
+INSERT INTO `sys_logininfor` VALUES (280, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2025-03-18 15:36:16');
+INSERT INTO `sys_logininfor` VALUES (281, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-18 15:36:22');
+INSERT INTO `sys_logininfor` VALUES (282, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-18 16:09:35');
+INSERT INTO `sys_logininfor` VALUES (283, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-19 10:33:33');
+INSERT INTO `sys_logininfor` VALUES (284, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-19 11:06:00');
+INSERT INTO `sys_logininfor` VALUES (285, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-19 11:56:53');
+INSERT INTO `sys_logininfor` VALUES (286, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-19 14:13:53');
+INSERT INTO `sys_logininfor` VALUES (287, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-19 15:36:30');
+INSERT INTO `sys_logininfor` VALUES (288, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码已失效', '2025-03-19 18:21:25');
+INSERT INTO `sys_logininfor` VALUES (289, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-19 18:21:28');
+INSERT INTO `sys_logininfor` VALUES (290, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-20 09:58:36');
+INSERT INTO `sys_logininfor` VALUES (291, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-20 11:20:44');
+INSERT INTO `sys_logininfor` VALUES (292, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2025-03-20 12:08:23');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -661,30 +743,30 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2000 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2000 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES (1, '系统管理', 0, 1, 'system', NULL, '', '', 1, 0, 'M', '0', '0', '', 'system', 'admin', '2024-11-27 15:51:25', '', NULL, '系统管理目录');
 INSERT INTO `sys_menu` VALUES (2, '系统监控', 0, 2, 'monitor', NULL, '', '', 1, 0, 'M', '0', '0', '', 'monitor', 'admin', '2024-11-27 15:51:25', '', NULL, '系统监控目录');
-INSERT INTO `sys_menu` VALUES (3, '系统工具', 0, 3, 'tool', NULL, '', '', 1, 0, 'M', '0', '0', '', 'tool', 'admin', '2024-11-27 15:51:25', '', NULL, '系统工具目录');
+INSERT INTO `sys_menu` VALUES (3, '系统工具', 0, 3, 'tool', NULL, '', '', 1, 0, 'M', '1', '0', '', 'tool', 'admin', '2024-11-27 15:51:25', '', NULL, '系统工具目录');
 INSERT INTO `sys_menu` VALUES (4, '数据统计与分析', 0, 4, 'data', 'data/DataAnalysis/index', '', '', 1, 0, 'C', '0', '0', '', 'guide', 'admin', '2024-11-27 15:51:25', '', NULL, '若依官网地址');
 INSERT INTO `sys_menu` VALUES (5, '膳食管理', 0, 5, 'meal', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, 'system', 'admin', '2024-11-27 18:26:34', '', NULL, '测试');
 INSERT INTO `sys_menu` VALUES (6, '营养师管理', 0, 6, 'nutri', 'nutri/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'tool', 'admin', '2024-11-27 18:26:34', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (7, '文章管理', 0, 7, 'news', NULL, NULL, '', 1, 0, 'M', '0', '0', NULL, 'build', 'admin', '2025-02-26 18:26:31', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (100, '用户管理', 1, 1, 'user', 'system/user/index', '', '', 1, 0, 'C', '0', '0', 'system:user:list', 'user', 'admin', '2024-11-27 15:51:25', '', NULL, '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (101, '角色管理', 1, 2, 'role', 'system/role/index', '', '', 1, 0, 'C', '0', '0', 'system:role:list', 'peoples', 'admin', '2024-11-27 15:51:25', '', NULL, '角色管理菜单');
-INSERT INTO `sys_menu` VALUES (102, '菜单管理', 1, 3, 'menu', 'system/menu/index', '', '', 1, 0, 'C', '0', '0', 'system:menu:list', 'tree-table', 'admin', '2024-11-27 15:51:25', '', NULL, '菜单管理菜单');
-INSERT INTO `sys_menu` VALUES (103, '部门管理', 1, 4, 'dept', 'system/dept/index', '', '', 1, 0, 'C', '0', '0', 'system:dept:list', 'tree', 'admin', '2024-11-27 15:51:25', '', NULL, '部门管理菜单');
-INSERT INTO `sys_menu` VALUES (104, '岗位管理', 1, 5, 'post', 'system/post/index', '', '', 1, 0, 'C', '0', '0', 'system:post:list', 'post', 'admin', '2024-11-27 15:51:25', '', NULL, '岗位管理菜单');
-INSERT INTO `sys_menu` VALUES (105, '字典管理', 1, 6, 'dict', 'system/dict/index', '', '', 1, 0, 'C', '0', '0', 'system:dict:list', 'dict', 'admin', '2024-11-27 15:51:25', '', NULL, '字典管理菜单');
-INSERT INTO `sys_menu` VALUES (106, '参数设置', 1, 7, 'config', 'system/config/index', '', '', 1, 0, 'C', '0', '0', 'system:config:list', 'edit', 'admin', '2024-11-27 15:51:25', '', NULL, '参数设置菜单');
-INSERT INTO `sys_menu` VALUES (107, '通知公告', 1, 8, 'notice', 'system/notice/index', '', '', 1, 0, 'C', '0', '0', 'system:notice:list', 'message', 'admin', '2024-11-27 15:51:25', '', NULL, '通知公告菜单');
+INSERT INTO `sys_menu` VALUES (102, '菜单管理', 1, 3, 'menu', 'system/menu/index', '', '', 1, 0, 'C', '1', '0', 'system:menu:list', 'tree-table', 'admin', '2024-11-27 15:51:25', '', NULL, '菜单管理菜单');
+INSERT INTO `sys_menu` VALUES (103, '部门管理', 1, 4, 'dept', 'system/dept/index', '', '', 1, 0, 'C', '1', '0', 'system:dept:list', 'tree', 'admin', '2024-11-27 15:51:25', '', NULL, '部门管理菜单');
+INSERT INTO `sys_menu` VALUES (104, '岗位管理', 1, 5, 'post', 'system/post/index', '', '', 1, 0, 'C', '1', '0', 'system:post:list', 'post', 'admin', '2024-11-27 15:51:25', '', NULL, '岗位管理菜单');
+INSERT INTO `sys_menu` VALUES (105, '字典管理', 1, 6, 'dict', 'system/dict/index', '', '', 1, 0, 'C', '1', '0', 'system:dict:list', 'dict', 'admin', '2024-11-27 15:51:25', '', NULL, '字典管理菜单');
+INSERT INTO `sys_menu` VALUES (106, '参数设置', 1, 7, 'config', 'system/config/index', '', '', 1, 0, 'C', '1', '0', 'system:config:list', 'edit', 'admin', '2024-11-27 15:51:25', '', NULL, '参数设置菜单');
+INSERT INTO `sys_menu` VALUES (107, '通知公告', 1, 8, 'notice', 'system/notice/index', '', '', 1, 0, 'C', '1', '0', 'system:notice:list', 'message', 'admin', '2024-11-27 15:51:25', '', NULL, '通知公告菜单');
 INSERT INTO `sys_menu` VALUES (108, '日志管理', 1, 9, 'log', '', '', '', 1, 0, 'M', '0', '0', '', 'log', 'admin', '2024-11-27 15:51:25', '', NULL, '日志管理菜单');
 INSERT INTO `sys_menu` VALUES (109, '在线用户', 2, 1, 'online', 'monitor/online/index', '', '', 1, 0, 'C', '0', '0', 'monitor:online:list', 'online', 'admin', '2024-11-27 15:51:25', '', NULL, '在线用户菜单');
-INSERT INTO `sys_menu` VALUES (110, '定时任务', 2, 2, 'job', 'monitor/job/index', '', '', 1, 0, 'C', '0', '0', 'monitor:job:list', 'job', 'admin', '2024-11-27 15:51:25', '', NULL, '定时任务菜单');
-INSERT INTO `sys_menu` VALUES (111, '数据监控', 2, 3, 'druid', 'monitor/druid/index', '', '', 1, 0, 'C', '0', '0', 'monitor:druid:list', 'druid', 'admin', '2024-11-27 15:51:25', '', NULL, '数据监控菜单');
+INSERT INTO `sys_menu` VALUES (110, '定时任务', 2, 2, 'job', 'monitor/job/index', '', '', 1, 0, 'C', '1', '0', 'monitor:job:list', 'job', 'admin', '2024-11-27 15:51:25', '', NULL, '定时任务菜单');
+INSERT INTO `sys_menu` VALUES (111, '数据监控', 2, 3, 'druid', 'monitor/druid/index', '', '', 1, 0, 'C', '1', '0', 'monitor:druid:list', 'druid', 'admin', '2024-11-27 15:51:25', '', NULL, '数据监控菜单');
 INSERT INTO `sys_menu` VALUES (112, '服务监控', 2, 4, 'server', 'monitor/server/index', '', '', 1, 0, 'C', '0', '0', 'monitor:server:list', 'server', 'admin', '2024-11-27 15:51:25', '', NULL, '服务监控菜单');
 INSERT INTO `sys_menu` VALUES (113, '缓存监控', 2, 5, 'cache', 'monitor/cache/index', '', '', 1, 0, 'C', '0', '0', 'monitor:cache:list', 'redis', 'admin', '2024-11-27 15:51:25', '', NULL, '缓存监控菜单');
 INSERT INTO `sys_menu` VALUES (114, '缓存列表', 2, 6, 'cacheList', 'monitor/cache/list', '', '', 1, 0, 'C', '0', '0', 'monitor:cache:list', 'redis-list', 'admin', '2024-11-27 15:51:25', '', NULL, '缓存列表菜单');
@@ -776,13 +858,14 @@ CREATE TABLE `sys_notice`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`notice_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '通知公告表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_notice
 -- ----------------------------
 INSERT INTO `sys_notice` VALUES (1, '温馨提醒：2018-07-01 若依新版本发布啦', '2', 0xE696B0E78988E69CACE58685E5AEB9, '0', 'admin', '2024-11-27 15:51:34', '', NULL, '管理员');
 INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 若依系统凌晨维护', '1', 0xE7BBB4E68AA4E58685E5AEB9, '0', 'admin', '2024-11-27 15:51:34', '', NULL, '管理员');
+INSERT INTO `sys_notice` VALUES (10, '开发完成啦', '2', NULL, '0', 'admin', '2025-03-01 16:39:27', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_oper_log
@@ -810,7 +893,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 108 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 117 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -823,6 +906,15 @@ INSERT INTO `sys_oper_log` VALUES (104, '角色管理', 1, 'com.ruoyi.web.contro
 INSERT INTO `sys_oper_log` VALUES (105, '用户管理', 1, 'com.ruoyi.web.controller.system.SysUserController.add()', 'POST', 1, 'admin', '研发部门', '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"createBy\":\"admin\",\"nickName\":\"营养师1\",\"params\":{},\"postIds\":[],\"roleIds\":[100],\"status\":\"0\",\"userId\":100,\"userName\":\"ccc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:36:51', 193);
 INSERT INTO `sys_oper_log` VALUES (106, '部门管理', 1, 'com.ruoyi.web.controller.system.SysDeptController.add()', 'POST', 1, 'admin', '研发部门', '/system/dept', '127.0.0.1', '内网IP', '{\"ancestors\":\"0,100\",\"children\":[],\"createBy\":\"admin\",\"deptName\":\"营养师\",\"orderNum\":1,\"params\":{},\"parentId\":100,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:53:16', 167);
 INSERT INTO `sys_oper_log` VALUES (107, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2025-02-28 16:36:51\",\"delFlag\":\"0\",\"deptId\":200,\"email\":\"\",\"loginDate\":\"2025-02-28 16:37:44\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"营养师1\",\"params\":{},\"phonenumber\":\"\",\"postIds\":[],\"roleIds\":[100],\"roles\":[{\"admin\":false,\"dataScope\":\"1\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":100,\"roleKey\":\"nutri\",\"roleName\":\"营养师\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"0\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":100,\"userName\":\"ccc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-02-28 16:54:03', 610);
+INSERT INTO `sys_oper_log` VALUES (108, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.changeStatus()', 'PUT', 1, 'admin', '研发部门', '/system/user/changeStatus', '127.0.0.1', '内网IP', '{\"admin\":false,\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 15:52:01', 91);
+INSERT INTO `sys_oper_log` VALUES (109, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.changeStatus()', 'PUT', 1, 'admin', '研发部门', '/system/user/changeStatus', '127.0.0.1', '内网IP', '{\"admin\":false,\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":103}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:04:11', 60);
+INSERT INTO `sys_oper_log` VALUES (110, '用户管理', 1, 'com.ruoyi.web.controller.system.SysUserController.add()', 'POST', 1, 'admin', '研发部门', '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"nickName\":\"1\",\"params\":{},\"postIds\":[],\"roleIds\":[100],\"status\":\"0\",\"userId\":104,\"userName\":\"1111\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:29:24', 116);
+INSERT INTO `sys_oper_log` VALUES (111, '用户管理', 3, 'com.ruoyi.web.controller.system.SysUserController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/user/105', '127.0.0.1', '内网IP', '[105]', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:30:31', 81);
+INSERT INTO `sys_oper_log` VALUES (112, '用户管理', 3, 'com.ruoyi.web.controller.system.SysUserController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/user/104', '127.0.0.1', '内网IP', '[104]', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:30:34', 177);
+INSERT INTO `sys_oper_log` VALUES (113, '用户管理', 3, 'com.ruoyi.web.controller.system.SysUserController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/user/103', '127.0.0.1', '内网IP', '[103]', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:30:35', 142);
+INSERT INTO `sys_oper_log` VALUES (114, '用户管理', 3, 'com.ruoyi.web.controller.system.SysUserController.remove()', 'DELETE', 1, 'admin', '研发部门', '/system/user/102', '127.0.0.1', '内网IP', '[102]', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:30:38', 96);
+INSERT INTO `sys_oper_log` VALUES (115, '通知公告', 1, 'com.ruoyi.web.controller.system.SysNoticeController.add()', 'POST', 1, 'admin', '研发部门', '/system/notice', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"noticeTitle\":\"开发完成啦\",\"noticeType\":\"2\",\"params\":{},\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-01 16:39:27', 42);
+INSERT INTO `sys_oper_log` VALUES (116, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', '研发部门', '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2025-02-28 16:35:10\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[4,5,118,119,120,7,121,122],\"params\":{},\"roleId\":100,\"roleKey\":\"nutri\",\"roleName\":\"营养师\",\"roleSort\":2,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2025-03-05 18:17:22', 245);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -840,7 +932,7 @@ CREATE TABLE `sys_post`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`post_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '岗位信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_post
@@ -870,14 +962,14 @@ CREATE TABLE `sys_role`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2024-11-27 15:51:24', '', NULL, '超级管理员');
 INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 0, 0, '1', '0', 'admin', '2024-11-27 15:51:24', 'admin', '2025-02-28 16:31:25', '普通角色');
-INSERT INTO `sys_role` VALUES (100, '营养师', 'nutri', 2, '1', 1, 1, '0', '0', 'admin', '2025-02-28 16:35:10', '', NULL, NULL);
+INSERT INTO `sys_role` VALUES (100, '营养师', 'nutri', 2, '1', 1, 1, '0', '0', 'admin', '2025-02-28 16:35:10', 'admin', '2025-03-05 18:17:21', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -887,7 +979,7 @@ CREATE TABLE `sys_role_dept`  (
   `role_id` bigint NOT NULL COMMENT '角色ID',
   `dept_id` bigint NOT NULL COMMENT '部门ID',
   PRIMARY KEY (`role_id`, `dept_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色和部门关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色和部门关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_dept
@@ -904,7 +996,7 @@ CREATE TABLE `sys_role_menu`  (
   `role_id` bigint NOT NULL COMMENT '角色ID',
   `menu_id` bigint NOT NULL COMMENT '菜单ID',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -994,6 +1086,7 @@ INSERT INTO `sys_role_menu` VALUES (2, 1057);
 INSERT INTO `sys_role_menu` VALUES (2, 1058);
 INSERT INTO `sys_role_menu` VALUES (2, 1059);
 INSERT INTO `sys_role_menu` VALUES (2, 1060);
+INSERT INTO `sys_role_menu` VALUES (100, 4);
 INSERT INTO `sys_role_menu` VALUES (100, 5);
 INSERT INTO `sys_role_menu` VALUES (100, 7);
 INSERT INTO `sys_role_menu` VALUES (100, 118);
@@ -1027,15 +1120,19 @@ CREATE TABLE `sys_user`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-01 13:56:39', 'admin', '2024-11-27 15:51:23', '', '2025-03-01 13:56:38', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-20 12:08:24', 'admin', '2024-11-27 15:51:23', '', '2025-03-20 12:08:23', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-11-27 15:51:23', 'admin', '2024-11-27 15:51:23', '', NULL, '测试员');
-INSERT INTO `sys_user` VALUES (100, 200, 'ccc', '营养师1', '00', '', '', '0', '', '$2a$10$b7UNoK6uX012DtTOMr7Ftu924o.U7sH0Hwgf0Xz.6EqYLIfpLyfBy', '0', '0', '127.0.0.1', '2025-02-28 16:37:44', 'admin', '2025-02-28 16:36:51', 'admin', '2025-02-28 16:54:03', NULL);
+INSERT INTO `sys_user` VALUES (100, 200, 'ccc', '营养师1', '00', '', '', '0', '', '$2a$10$b7UNoK6uX012DtTOMr7Ftu924o.U7sH0Hwgf0Xz.6EqYLIfpLyfBy', '0', '0', '127.0.0.1', '2025-03-05 18:17:48', 'admin', '2025-02-28 16:36:51', 'admin', '2025-03-05 18:17:47', NULL);
 INSERT INTO `sys_user` VALUES (101, 200, 'c01', 'c', '00', '', 'c', '0', '', '123456', '1', '0', '', NULL, '', '2025-02-28 17:38:31', '', NULL, 'cccc');
+INSERT INTO `sys_user` VALUES (102, 200, 'hd1', '11', '00', '', '111', '0', '', '$2a$10$ugFvMzowCJQs698qdYHIj.rRDKdbdELgKutFjBUir8uvCu16464jW', '0', '2', '127.0.0.1', '2025-03-01 15:52:06', '', '2025-03-01 15:45:23', 'admin', '2025-03-01 15:52:05', '111');
+INSERT INTO `sys_user` VALUES (103, 200, 'hd11', '11', '00', '', '111', '0', '', '$2a$10$qLbyOaHYlmQw/g7KvRGs7efDbz/iU0FXrnEDmfhd6b7LuIySIkon.', '0', '2', '127.0.0.1', '2025-03-01 16:04:27', '', '2025-03-01 16:03:59', 'admin', '2025-03-01 16:04:27', '111');
+INSERT INTO `sys_user` VALUES (104, NULL, '1111', '1', '00', '', '', '0', '', '$2a$10$A.0qVCxwLS2azBrboCbipeNe1PjpFeQHp82ISzex8OcGjmXp3oY/W', '0', '2', '', NULL, '', '2025-03-01 16:29:24', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (105, 200, '11', '1', '00', '', '1', '0', '', '$2a$10$08LotWTQirybXAd3KBGYmu7yWE6dr0ZOFR5EisVjAtvyh58T3M2/u', '1', '2', '', NULL, '', '2025-03-01 16:30:20', '', NULL, '1');
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -1045,7 +1142,7 @@ CREATE TABLE `sys_user_post`  (
   `user_id` bigint NOT NULL COMMENT '用户ID',
   `post_id` bigint NOT NULL COMMENT '岗位ID',
   PRIMARY KEY (`user_id`, `post_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_post
@@ -1061,7 +1158,7 @@ CREATE TABLE `sys_user_role`  (
   `user_id` bigint NOT NULL COMMENT '用户ID',
   `role_id` bigint NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`user_id`, `role_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户和角色关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户和角色关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_role
@@ -1078,7 +1175,7 @@ CREATE TABLE `wx_categories`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_categories
@@ -1107,13 +1204,14 @@ CREATE TABLE `wx_consumption`  (
   `swimming` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `others` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `timestamp` date NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_consumption
 -- ----------------------------
 INSERT INTO `wx_consumption` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '878.3', '1596', '15', '15', '15', '15', '15', '75', '2024-12-19');
 INSERT INTO `wx_consumption` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '888.15', '1493', '15', '15', '15', '15', '15', '90', '2024-12-20');
+INSERT INTO `wx_consumption` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '112.1', '0', '0', '0', '0', '0', '0', '0', '2025-03-20');
 
 -- ----------------------------
 -- Table structure for wx_newmemo
@@ -1132,7 +1230,7 @@ CREATE TABLE `wx_newmemo`  (
   `Soy` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `Oil` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `timestamp` date NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_newmemo
@@ -1152,12 +1250,12 @@ CREATE TABLE `wx_news`  (
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_news
 -- ----------------------------
-INSERT INTO `wx_news` VALUES (1, '减肥时的饮食搭配至关重要，以下是一些建议', '控制热量摄入\r\n- 了解食物热量，计算个人每日所需热量，一般成年女性每天 1200 - 1500 千卡，成年男性 1500 - 1800 千卡，以此为基础合理安排饮食，制造热量缺口。\r\n保证营养均衡\r\n- 增加蔬果摄入：它们富含维生素、矿物质和膳食纤维，且热量低。如苹果、橙子、菠菜、西兰花等，可增加饱腹感，减少其他高热量食物摄入。\r\n- 保证蛋白质摄入：蛋白质是减肥期间的重要营养素，可选鸡胸肉、鱼肉、虾、豆类、蛋类、奶制品等优质蛋白，既能增加饱腹感，又有助于维持肌肉量。\r\n- 选择全谷物：用糙米、燕麦片、全麦面包等全谷物替代部分精细米面，其富含膳食纤维，消化吸收慢，能提供持久能量。\r\n合理安排餐次和饮食时间\r\n- 少食多餐，每天安排 4 - 6 餐，包括正餐和健康零食，如水果、酸奶、坚果等，避免过度饥饿或暴饮暴食。\r\n- 规律饮食时间，早餐在 7 - 9 点，午餐 12 - 14 点，晚餐 18 - 20 点，助于维持稳定的新陈代谢。\r\n控制食物分量和烹饪方式\r\n- 用小盘子、小碗控制食物分量，每餐七八分饱。\r\n- 多采用清蒸、水煮、烤、炖等烹饪方式，少用油炸、油煎，减少油脂使用，降低热量。如清蒸鱼、水煮鸡胸肉、烤蔬菜等。', 'http://localhost:8080/减肥时的饮食.jpg');
+INSERT INTO `wx_news` VALUES (1, '减肥时的饮食搭配至关重要，以下是一些建议1', '控制热量摄入\r\n- 了解食物热量，计算个人每日所需热量，一般成年女性每天 1200 - 1500 千卡，成年男性 1500 - 1800 千卡，以此为基础合理安排饮食，制造热量缺口。\r\n保证营养均衡\r\n- 增加蔬果摄入：它们富含维生素、矿物质和膳食纤维，且热量低。如苹果、橙子、菠菜、西兰花等，可增加饱腹感，减少其他高热量食物摄入。\r\n- 保证蛋白质摄入：蛋白质是减肥期间的重要营养素，可选鸡胸肉、鱼肉、虾、豆类、蛋类、奶制品等优质蛋白，既能增加饱腹感，又有助于维持肌肉量。\r\n- 选择全谷物：用糙米、燕麦片、全麦面包等全谷物替代部分精细米面，其富含膳食纤维，消化吸收慢，能提供持久能量。\r\n合理安排餐次和饮食时间\r\n- 少食多餐，每天安排 4 - 6 餐，包括正餐和健康零食，如水果、酸奶、坚果等，避免过度饥饿或暴饮暴食。\r\n- 规律饮食时间，早餐在 7 - 9 点，午餐 12 - 14 点，晚餐 18 - 20 点，助于维持稳定的新陈代谢。\r\n控制食物分量和烹饪方式\r\n- 用小盘子、小碗控制食物分量，每餐七八分饱。\r\n- 多采用清蒸、水煮、烤、炖等烹饪方式，少用油炸、油煎，减少油脂使用，降低热量。如清蒸鱼、水煮鸡胸肉、烤蔬菜等。', 'http://localhost:8080/减肥时的饮食.jpg');
 INSERT INTO `wx_news` VALUES (2, '减脂期科学饮食结构/巨掉秤的万能搭配公式', '健康减肥饮食每日摄入占比\r\n🥦纤维膳食	45%\r\n🌽碳水25%\r\n🍤蛋白质30%\r\n不吃碳水≠瘦\r\n减肥≠不吃碳水\r\n	\r\n膳食万能搭配公式\r\n🍳早餐:优质碳水+蛋白质+膳食纤维\r\n🍛午餐:优质碳水+蛋白质十膳食纤维\r\n🥗晚餐:蛋白质+膳食纤维\r\n	\r\n优质碳水\r\n红薯   紫薯    南瓜    魔芋   芋头\r\n山药   玉米    莲藕    土豆    糙米\r\n薏米   紫米    杂粮    荞麦    小米\r\n意面   燕麦    全麦制品馒头面包\r\n	\r\n蛋白质\r\n鸡蛋    牛奶    豆浆   豆腐    虾仁\r\n牛肉    鸡肉    里脊   排骨    鸭肉\r\n羊肉    鱼肉\r\n一定是瘦肉，禽类去皮\r\n	\r\n膳食纤维\r\n西蓝花   花菜   菠菜  生菜\r\n紫甘蓝   白菜   芦笋   冬瓜\r\n卷心菜   西芹   秋葵   木耳\r\n荷兰豆   黄瓜   菜椒   苦瓜\r\n胡萝卜   蘑菇   洋葱   青菜\r\n	\r\n膳食纤维\r\n圣女果   橘子   蓝莓   草莓\r\n火龙果   橙子   苹果   柚子\r\n猕猴桃   桃子   柠檬   樱桃\r\n番石榴   菠萝   木瓜   枇杷\r\n无花果   梨\r\n	\r\n⚠️注意事项\r\n1️⃣每餐不要吃太饱，吃七分饱。\r\n2️⃣每餐最后吃碳水。\r\n3️⃣吃饭速度不要太快，尽量细嚼慢咽。\r\n4️⃣每日保证饮水200ML。\r\n5️⃣身体不舒服，马上及时停止。\r\n	\r\n希望减肥的姐妹们都可以看到，少走弯路，健康减肥❗\r\n大家都是怎么搭配饮食的(●.●)❓❓', 'http://localhost:8080/减脂期科学饮食结构.jpg');
 
 -- ----------------------------
@@ -1177,41 +1275,32 @@ CREATE TABLE `wx_recipes`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id` ASC) USING BTREE,
   CONSTRAINT `wx_recipes_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `wx_categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 218 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_recipes
 -- ----------------------------
-INSERT INTO `wx_recipes` VALUES (1, '宫保鸡丁', 'http://localhost:8080/鸡汤.jpeg', 500, '鸡肉、花生、辣椒', 1, '补充蛋白质、增强免疫力和促进消化', '减肥', '将鸡胸肉切丁腌制，花生炒熟备用。炒鸡丁至变色后备用，再炒香干辣椒和姜蒜，加入鸡丁、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
-INSERT INTO `wx_recipes` VALUES (2, '红烧肉', 'http://localhost:8080/红烧肉.jpeg', 600, '五花肉、酱油、糖', 2, '补充能量、滋补身体', '一般人群', '将五花肉切块，焯水后捞出。锅中放油，加入糖炒至焦糖色，加入肉块翻炒，加入酱油和水，炖煮至肉软烂。');
-INSERT INTO `wx_recipes` VALUES (3, '麻婆豆腐', 'http://localhost:8080/麻婆豆腐.jpeg', 350, '豆腐、牛肉末、辣椒', 3, '开胃、促进消化', '一般人群', '豆腐切块焯水备用。锅中放油，炒香牛肉末，加入辣椒和豆瓣酱炒香，加入豆腐翻炒，最后加水淀粉勾芡。');
-INSERT INTO `wx_recipes` VALUES (4, '鱼香肉丝', 'http://localhost:8080/鱼香肉丝.jpeg', 400, '猪肉、胡萝卜、青椒', 4, '开胃、促进食欲', '一般人群', '猪肉切丝腌制，胡萝卜和青椒切丝。锅中放油，炒香肉丝，加入胡萝卜和青椒翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (5, '糖醋排骨', 'http://localhost:8080/糖醋排骨.jpeg', 450, '排骨、糖、醋', 5, '开胃、补钙', '一般人群', '排骨焯水后捞出。锅中放油，加入糖炒至焦糖色，加入排骨翻炒，加入醋和水，炖煮至排骨软烂。');
-INSERT INTO `wx_recipes` VALUES (6, '清蒸鲈鱼', 'http://localhost:8080/清蒸鲈鱼.jpeg', 300, '鲈鱼、姜、葱', 6, '补充蛋白质、益智', '一般人群', '鲈鱼洗净，放入姜葱，蒸锅中蒸熟，淋上热油和酱油即可。');
-INSERT INTO `wx_recipes` VALUES (7, '酸辣土豆丝', 'http://localhost:8080/酸辣土豆丝.jpeg', 200, '土豆、辣椒、醋', 7, '开胃、促进消化', '一般人群', '土豆切丝焯水，锅中放油，炒香辣椒，加入土豆丝翻炒，加入醋和调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (8, '西红柿炒鸡蛋', 'http://localhost:8080/西红柿炒鸡蛋.jpeg', 250, '鸡蛋、西红柿', 8, '补充维生素、提高免疫力', '一般人群', '鸡蛋打散炒熟备用。锅中放油，炒香西红柿，加入鸡蛋翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (9, '宫保虾球', 'http://localhost:8080/宫保虾球.jpeg', 400, '虾仁、花生、辣椒', 1, '补充蛋白质、增强免疫力', '一般人群', '虾仁腌制，花生炒熟备用。炒虾仁至变色后备用，再炒香干辣椒和姜蒜，加入虾仁、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
-INSERT INTO `wx_recipes` VALUES (10, '辣子鸡', 'http://localhost:8080/辣子鸡.jpeg', 500, '鸡肉、辣椒、花椒', 2, '开胃、促进食欲', '一般人群', '鸡肉切块腌制，锅中放油，炒香辣椒和花椒，加入鸡肉翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (11, '水煮鱼', 'http://localhost:8080/水煮鱼.jpeg', 550, '鱼片、辣椒、豆芽', 3, '开胃、补充蛋白质', '一般人群', '鱼片腌制，锅中放油，炒香辣椒，加入水煮开，加入鱼片和豆芽煮熟。');
-INSERT INTO `wx_recipes` VALUES (12, '干锅花菜', 'http://localhost:8080/干锅花菜.jpeg', 300, '花菜、五花肉、辣椒', 4, '开胃、促进消化', '一般人群', '花菜焯水，五花肉切片。锅中放油，炒香五花肉，加入辣椒和花菜翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (13, '红烧茄子', 'http://localhost:8080/红烧茄子.jpeg', 350, '茄子、酱油、糖', 5, '开胃、促进消化', '一般人群', '茄子切块，锅中放油，炒香茄子，加入酱油和糖翻炒，加入水炖煮至茄子软烂。');
-INSERT INTO `wx_recipes` VALUES (14, '蒜蓉西兰花', 'http://localhost:8080/蒜蓉西兰花.jpeg', 200, '西兰花、蒜', 6, '补充维生素、提高免疫力', '一般人群', '西兰花焯水，锅中放油，炒香蒜蓉，加入西兰花翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (15, '香菇炖鸡', 'http://localhost:8080/香菇炖鸡.jpeg', 400, '鸡肉、香菇、姜', 7, '补充蛋白质、滋补身体', '一般人群', '鸡肉切块，香菇泡发。锅中放油，炒香姜片，加入鸡肉和香菇翻炒，加入水炖煮至鸡肉熟烂。');
-INSERT INTO `wx_recipes` VALUES (16, '豆豉蒸排骨', 'http://localhost:8080/豆豉蒸排骨.jpeg', 450, '排骨、豆豉、辣椒', 8, '开胃、补钙', '一般人群', '排骨腌制，加入豆豉和辣椒，蒸锅中蒸熟。');
-INSERT INTO `wx_recipes` VALUES (17, '葱爆羊肉', 'http://localhost:8080/葱爆羊肉.jpeg', 500, '羊肉、葱', 1, '补充蛋白质、滋补身体', '一般人群', '羊肉切片腌制，锅中放油，炒香葱段，加入羊肉翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (18, '鱼香茄子', 'http://localhost:8080/鱼香茄子.jpeg', 350, '茄子、辣椒、酱油', 2, '开胃、促进食欲', '一般人群', '茄子切块，锅中放油，炒香辣椒，加入茄子翻炒，加入酱油和调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (19, '宫保豆腐', 'http://localhost:8080/宫保豆腐.jpeg', 300, '豆腐、花生、辣椒', 3, '补充蛋白质、增强免疫力', '一般人群', '豆腐切块，花生炒熟备用。炒豆腐至金黄后备用，再炒香干辣椒和姜蒜，加入豆腐、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
-INSERT INTO `wx_recipes` VALUES (20, '香辣虾', 'http://localhost:8080/香辣虾.jpeg', 400, '虾、辣椒、花椒', 4, '开胃、补充蛋白质', '一般人群', '虾去壳腌制，锅中放油，炒香辣椒和花椒，加入虾翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (21, '红烧狮子头', 'http://localhost:8080/红烧狮子头.jpeg', 500, '猪肉、酱油、糖', 5, '补充能量、滋补身体', '一般人群', '猪肉剁成肉馅，加入调料搅拌均匀，捏成肉丸。锅中放油，煎至金黄，加入酱油和糖炖煮。');
-INSERT INTO `wx_recipes` VALUES (22, '蒜蓉粉丝蒸扇贝', 'http://localhost:8080/蒜蓉粉丝蒸扇贝.jpeg', 300, '扇贝、粉丝、蒜', 6, '补充蛋白质、提高免疫力', '一般人群', '扇贝洗净，粉丝泡软。蒜蓉炒香，加入扇贝和粉丝，蒸锅中蒸熟。');
-INSERT INTO `wx_recipes` VALUES (23, '酸菜鱼', 'http://localhost:8080/酸菜鱼.jpeg', 550, '鱼片、酸菜、辣椒', 7, '开胃、补充蛋白质', '一般人群', '鱼片腌制，锅中放油，炒香酸菜和辣椒，加入水煮开，加入鱼片煮熟。');
-INSERT INTO `wx_recipes` VALUES (24, '宫保鸡翅', 'http://localhost:8080/宫保鸡翅.jpeg', 500, '鸡翅、花生、辣椒', 8, '补充蛋白质、增强免疫力', '一般人群', '鸡翅腌制，花生炒熟备用。炒鸡翅至变色后备用，再炒香干辣椒和姜蒜，加入鸡翅、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
-INSERT INTO `wx_recipes` VALUES (25, '香煎豆腐', 'http://localhost:8080/香煎豆腐.jpeg', 250, '豆腐、酱油、葱', 1, '补充蛋白质、提高免疫力', '一般人群', '豆腐切块，锅中放油，煎至金黄，加入酱油和葱花翻炒。');
-INSERT INTO `wx_recipes` VALUES (26, '红烧鸡翅', 'http://localhost:8080/红烧鸡翅.jpeg', 450, '鸡翅、酱油、糖', 2, '补充蛋白质、滋补身体', '一般人群', '鸡翅焯水后捞出。锅中放油，加入糖炒至焦糖色，加入鸡翅翻炒，加入酱油和水，炖煮至鸡翅软烂。');
-INSERT INTO `wx_recipes` VALUES (27, '蒜蓉蒸茄子', 'http://localhost:8080/蒜蓉蒸茄子.jpeg', 200, '茄子、蒜', 3, '补充维生素、提高免疫力', '一般人群', '茄子切块，蒜蓉炒香，加入茄子，蒸锅中蒸熟。');
-INSERT INTO `wx_recipes` VALUES (28, '宫保牛肉', 'http://localhost:8080/宫保牛肉.jpeg', 500, '牛肉、花生、辣椒', 4, '补充蛋白质、增强免疫力', '一般人群', '牛肉切片腌制，花生炒熟备用。炒牛肉至变色后备用，再炒香干辣椒和姜蒜，加入牛肉、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
-INSERT INTO `wx_recipes` VALUES (29, '香辣鸡翅', 'http://localhost:8080/香辣鸡翅.jpeg', 500, '鸡翅、辣椒、花椒', 5, '开胃、补充蛋白质', '一般人群', '鸡翅腌制，锅中放油，炒香辣椒和花椒，加入鸡翅翻炒，加入调料炒匀。');
-INSERT INTO `wx_recipes` VALUES (30, '红烧豆腐', 'http://localhost:8080/红烧豆腐.jpeg', 300, '豆腐、酱油、糖', 6, '补充蛋白质、促进消化', '一般人群', '豆腐切块，锅中放油，炒香豆腐，加入酱油和糖翻炒，加入水炖煮至豆腐软烂。');
+INSERT INTO `wx_recipes` VALUES (1, '宫保鸡丁', 'http://localhost:8080/宫保鸡丁.jpg', 473, '鸡肉、花生、辣椒', 1, '补充蛋白质、增强免疫力和促进消化', '增肌', '将鸡胸肉切丁腌制，花生炒熟备用。炒鸡丁至变色后备用，再炒香干辣椒和姜蒜，加入鸡丁、青椒和调料翻炒，最后加入花生，翻炒均匀即可出锅。');
+INSERT INTO `wx_recipes` VALUES (2, '清蒸鲈鱼', 'http://localhost:8080/清蒸鲈鱼.jpg', 450, '鲈鱼、姜、葱', 1, '补充优质蛋白、DHA、促进大脑发育', '健脑', '鲈鱼清洗干净，腌制入味，放入姜丝，上锅蒸8-10分钟，最后淋上热油，撒上葱花即可。');
+INSERT INTO `wx_recipes` VALUES (3, '西兰花炒虾仁', 'http://localhost:8080/西兰花炒虾仁.jpg', 380, '西兰花、虾仁、蒜', 1, '补充维生素C、蛋白质、抗氧化', '减脂', '西兰花切小朵焯水，虾仁去壳腌制，锅中爆香蒜末，放入虾仁翻炒，加入西兰花翻炒均匀即可。');
+INSERT INTO `wx_recipes` VALUES (4, '藜麦鸡胸沙拉', 'http://localhost:8080/藜麦鸡胸沙拉.jpg', 420, '藜麦、鸡胸肉、牛油果、生菜', 1, '补充优质碳水、蛋白质、健康脂肪', '减脂', '藜麦煮熟，鸡胸肉煎熟切丁，混合生菜、牛油果，淋上酱汁即可。');
+INSERT INTO `wx_recipes` VALUES (5, '三文鱼牛油果饭', 'http://localhost:8080/三文鱼牛油果饭.jpg', 550, '三文鱼、牛油果、糙米', 2, '补充omega-3、健康脂肪、膳食纤维', '增肌', '糙米煮熟，三文鱼煎至七分熟，牛油果切片，搭配摆盘，淋上日式酱汁。');
+INSERT INTO `wx_recipes` VALUES (6, '蒜蓉菠菜', 'http://localhost:8080/蒜蓉菠菜.jpg', 200, '菠菜、蒜、橄榄油', 1, '补充铁质、叶酸、维生素K', '养生', '菠菜洗净焯水，蒜末爆香，加入菠菜翻炒，最后淋上橄榄油即可。');
+INSERT INTO `wx_recipes` VALUES (7, '香煎鸡胸配甜薯', 'http://localhost:8080/香煎鸡胸配甜薯.jpg', 480, '鸡胸肉、红薯、西兰花', 1, '补充优质蛋白、复合碳水、膳食纤维', '增肌', '鸡胸肉腌制煎熟，红薯切片烤制，西兰花清蒸，搭配摆盘。');
+INSERT INTO `wx_recipes` VALUES (8, '燕麦水果碗', 'http://localhost:8080/燕麦水果碗.jpg', 350, '燕麦、蓝莓、香蕉、酸奶', 1, '补充膳食纤维、抗氧化物质、益生菌', '能量', '燕麦泡牛奶，加入切片香蕉、蓝莓，淋上酸奶，撒上坚果。');
+INSERT INTO `wx_recipes` VALUES (9, '地中海烤鸡', 'http://localhost:8080/地中海烤鸡.jpg', 520, '鸡腿、橄榄、番茄、迷迭香', 2, '补充蛋白质、抗氧化物质、健康脂肪', '增肌', '鸡腿腌制，配上橄榄、番茄，撒上迷迭香，烤制至金黄。');
+INSERT INTO `wx_recipes` VALUES (10, '豆腐杂菇汤', 'http://localhost:8080/豆腐杂菇汤.jpg', 280, '豆腐、香菇、金针菇、海带', 1, '补充植物蛋白、膳食纤维、提高免疫力', '养生', '豆腐切块，各类菌菇洗净，加入高汤熬煮，最后加入海带丝。');
+INSERT INTO `wx_recipes` VALUES (11, '黑椒牛柳', 'http://localhost:8080/黑椒牛柳.jpg', 550, '牛里脊、彩椒、黑胡椒', 2, '补充优质蛋白、铁质、维生素C', '增肌', '牛里脊切条腌制，大火快炒，加入彩椒，最后撒上现磨黑胡椒。');
+INSERT INTO `wx_recipes` VALUES (12, '南瓜藜麦饭', 'http://localhost:8080/南瓜藜麦饭.jpg', 400, '南瓜、藜麦、鸡胸肉', 1, '补充复合碳水、胡萝卜素、优质蛋白', '能量', '南瓜蒸熟压泥，藜麦煮熟，鸡胸肉切丁煎熟，混合搅拌。');
+INSERT INTO `wx_recipes` VALUES (13, '芦笋虾仁', 'http://localhost:8080/芦笋虾仁.jpg', 320, '芦笋、虾仁、蒜', 1, '补充蛋白质、叶酸、膳食纤维', '减脂', '芦笋切段焯水，虾仁去壳腌制，蒜末爆香后大火快炒。');
+INSERT INTO `wx_recipes` VALUES (14, '三色蛋白饼', 'http://localhost:8080/三色蛋白饼.jpeg', 300, '蛋白、菠菜粉、胡萝卜粉', 1, '补充优质蛋白、维生素、低脂', '减脂', '蛋白打发，分三份加入不同粉末，煎成薄饼卷起。');
+INSERT INTO `wx_recipes` VALUES (15, '香烤三文鱼', 'http://localhost:8080/香烤三文鱼.jpg', 480, '三文鱼、柠檬、迷迭香', 2, '补充omega-3、蛋白质、维生素D', '增肌', '三文鱼腌制，撒上迷迭香，烤制8分钟，挤上柠檬汁。');
+INSERT INTO `wx_recipes` VALUES (16, '鸡肉菠萝饭', 'http://localhost:8080/鸡肉菠萝饭.jpeg', 450, '鸡胸肉、菠萝、糙米', 1, '补充蛋白质、维生素C、膳食纤维', '能量', '糙米煮熟，鸡胸肉切丁炒熟，菠萝切丁，混合翻炒。');
+INSERT INTO `wx_recipes` VALUES (17, '紫甘蓝沙拉', 'http://localhost:8080/紫甘蓝沙拉.jpeg', 250, '紫甘蓝、胡萝卜、苹果', 1, '补充抗氧化物质、维生素、膳食纤维', '减脂', '紫甘蓝切丝，胡萝卜丝，苹果丁，混合搅拌，淋上酱汁。');
+INSERT INTO `wx_recipes` VALUES (18, '蒸鸡胸藜麦碗', 'http://localhost:8080/蒸鸡胸藜麦碗.jpg', 420, '鸡胸肉、藜麦、牛油果', 1, '补充优质蛋白、复合碳水、健康脂肪', '增肌', '鸡胸肉清蒸，藜麦煮熟，牛油果切片，搭配摆盘。');
+INSERT INTO `wx_recipes` VALUES (19, '虾仁蔬菜粥', 'http://localhost:8080/虾仁蔬菜粥.jpeg', 350, '虾仁、胡萝卜、玉米', 1, '补充蛋白质、维生素、易消化', '养生', '大米熬粥，加入切碎的胡萝卜和玉米，最后加入虾仁。');
+INSERT INTO `wx_recipes` VALUES (20, '牛肉蘑菇汤', 'http://localhost:8080/牛肉蘑菇汤.jpg', 480, '牛肉、蘑菇、胡萝卜', 2, '补充蛋白质、铁质、提高免疫力', '增肌', '牛肉切片，蘑菇切片，胡萝卜切块，加入高汤炖煮。');
+INSERT INTO `wx_recipes` VALUES (216, '删除', 'http://localhost:8080/删除.jpg', 1, '删除', 2, '删除', '删除', '删除');
 
 -- ----------------------------
 -- Table structure for wx_solarterms
@@ -1220,7 +1309,7 @@ DROP TABLE IF EXISTS `wx_solarterms`;
 CREATE TABLE `wx_solarterms`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_solarterms
@@ -1240,12 +1329,12 @@ CREATE TABLE `wx_user`  (
   `preferences` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `update_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`openid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wx_user
 -- ----------------------------
 INSERT INTO `wx_user` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDk', '1', '1', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `wx_user` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '陈', '1', '1', '1', '1', '增脂', '2024-12-17 16:09:18');
+INSERT INTO `wx_user` VALUES ('o2oTw6_O_2RLbiky-i_K8CfPsDkA', '陈', '1', '1', '1', '1', '增肌', '2025-03-03 15:29:13');
 
 SET FOREIGN_KEY_CHECKS = 1;

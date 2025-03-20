@@ -1,11 +1,12 @@
 package com.ruoyi.common.core.domain.entity;
 
 public class Recipe {
-    private Long id;
+    private int id;
     private String name;
     private String imageUrl;
     private Integer calories;
     private String ingredients;
+    private String category_id;
     private String category;
     private String effect;
     private String suitpeople;
@@ -19,11 +20,19 @@ public class Recipe {
         this.category = category;
     }
 
-    public Long getId() {
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

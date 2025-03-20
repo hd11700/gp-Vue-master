@@ -56,4 +56,7 @@ public interface wxMapper {
     public int updateConsumption(Consumption cs);
 
     List<News> getAllNews();
+    int insertNews(News news);
+    int updateNews(News news);
+    int deleteNews(int id);
 }

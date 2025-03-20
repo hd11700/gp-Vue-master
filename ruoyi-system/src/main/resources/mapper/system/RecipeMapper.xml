@@ -21,29 +21,34 @@
 
     <!-- Select all recipes with category -->
     <select id="getAllRecipesWithCategory" resultMap="RecipeWithCategoryResultMap">
-        SELECT  r.name, r.image_url, r.calories, r.ingredients,  c.name AS category_name,r.effect,r.suitpeople,r.make
+        SELECT  r.id, r.name, r.image_url, r.calories, r.ingredients,r.category_id,  c.name AS category_name,r.effect,r.suitpeople,r.make
         FROM wx_recipes r
         JOIN wx_categories c ON r.category_id = c.id
     </select>
 
     <!-- Insert a new recipe -->
     <insert id="insertRecipe" parameterType="Recipe" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO wx_recipes (name, image_url, calories, ingredients)
-        VALUES (#{name}, #{imageUrl}, #{calories}, #{ingredients})
+        INSERT INTO wx_recipes (name, image_url, calories, ingredients, category_id, effect, suitpeople, make)
+        VALUES (#{name}, #{imageUrl}, #{calories}, #{ingredients}, #{category_id}, #{effect}, #{suitpeople}, #{make})
     </insert>
 
-    <!-- Update a recipe -->
+    <!-- Update an existing recipe -->
     <update id="updateRecipe" parameterType="Recipe">
         UPDATE wx_recipes
         SET name = #{name},
         image_url = #{imageUrl},
         calories = #{calories},
-        ingredients = #{ingredients}
+        ingredients = #{ingredients},
+        category_id = #{category_id},
+        effect = #{effect},
+        suitpeople = #{suitpeople},
+        make = #{make}
         WHERE id = #{id}
     </update>
 
-    <!-- Delete a recipe by ID -->
-    <delete id="deleteRecipeById" parameterType="long">
-        DELETE FROM wx_recipes WHERE id = #{id}
+    <!-- Delete a recipe by id -->
+    <delete id="deleteRecipe" parameterType="int">
+        DELETE FROM wx_recipes
+        WHERE id = #{id}
     </delete>
 </mapper>

@@ -134,4 +134,20 @@
         FROM wx_news
     </select>
 
+    <insert id="insertNews" parameterType="News">
+        INSERT INTO wx_news (content, title, img)
+        VALUES (#{content}, #{title}, #{img})
+    </insert>
+
+    <update id="updateNews" parameterType="News">
+        UPDATE wx_news
+        SET content = #{content}, title = #{title}, img = #{img}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteNews" parameterType="int">
+        DELETE FROM wx_news
+        WHERE id = #{id}
+    </delete>
+
 </mapper>

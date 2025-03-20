@@ -14,7 +14,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -23,6 +22,12 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 import java.util.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.HttpStatus;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.stream.Collectors;
 
 @RestController
 public class WeChatController extends BaseController
@@ -93,10 +98,12 @@ public class WeChatController extends BaseController
 
         for (Recipe recipe : recipes) {
             Map<String, Object> formattedRecipe = new HashMap<>();
+            formattedRecipe.put("id", recipe.getId());
             formattedRecipe.put("name", recipe.getName());
             formattedRecipe.put("imageUrl", recipe.getImageUrl());
             formattedRecipe.put("calories", recipe.getCalories());
             formattedRecipe.put("ingredients",recipe.getIngredients() );
+            formattedRecipe.put("category_id", recipe.getCategory_id());
             formattedRecipe.put("category", recipe.getCategory());
             formattedRecipe.put("effect", recipe.getEffect());
             formattedRecipe.put("suitpeople", recipe.getSuitpeople());
@@ -106,6 +113,84 @@ public class WeChatController extends BaseController
 
         return ResponseEntity.ok(formattedRecipes);
     }
+    /**
+     * 新增菜谱
+     */
+    @PostMapping("/api/recipes")
+    public ResponseEntity<String> addRecipe(@RequestBody Map<String, Object> recipeData) {
+        try {
+            Recipe newRecipe = new Recipe();
+            newRecipe.setName((String) recipeData.get("name"));
+            newRecipe.setImageUrl((String) recipeData.get("imageUrl"));
+            newRecipe.setCalories((Integer) recipeData.get("calories"));
+            newRecipe.setIngredients((String) recipeData.get("ingredients"));
+            newRecipe.setCategory_id((String) recipeData.get("category_id"));
+            newRecipe.setEffect((String) recipeData.get("effect"));
+            newRecipe.setSuitpeople((String) recipeData.get("suitpeople"));
+            newRecipe.setMake((String) recipeData.get("make"));
+
+            int result = recipeMapper.insertRecipe(newRecipe);
+
+            if (result > 0) {
+                return ResponseEntity.ok("菜谱新增成功");
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("菜谱新增失败");
+            }
+        } catch (Exception e) {
+            logger.error("Error adding recipe", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("菜谱新增失败");
+        }
+    }
+
+    /**
+     * 修改菜谱
+     */
+    @PutMapping("/api/recipes/{id}")
+    public ResponseEntity<String> updateRecipe(@PathVariable("id") int id, @RequestBody Map<String, Object> recipeData) {
+        try {
+            Recipe updatedRecipe = new Recipe();
+            updatedRecipe.setId(id);
+            updatedRecipe.setName((String) recipeData.get("name"));
+            updatedRecipe.setImageUrl((String) recipeData.get("imageUrl"));
+            updatedRecipe.setCalories((Integer) recipeData.get("calories"));
+            updatedRecipe.setIngredients((String) recipeData.get("ingredients"));
+            updatedRecipe.setCategory_id((String) recipeData.get("category_id"));
+            updatedRecipe.setEffect((String) recipeData.get("effect"));
+            updatedRecipe.setSuitpeople((String) recipeData.get("suitpeople"));
+            updatedRecipe.setMake((String) recipeData.get("make"));
+
+            int result = recipeMapper.updateRecipe(updatedRecipe);
+
+            if (result > 0) {
+                return ResponseEntity.ok("菜谱修改成功");
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("菜谱修改失败");
+            }
+        } catch (Exception e) {
+            logger.error("Error updating recipe", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("菜谱修改失败");
+        }
+    }
+
+    /**
+     * 删除菜谱
+     */
+    @DeleteMapping("/api/recipes/{id}")
+    public ResponseEntity<String> deleteRecipe(@PathVariable("id") int id) {
+        try {
+            int result = recipeMapper.deleteRecipe(id);
+
+            if (result > 0) {
+                return ResponseEntity.ok("菜谱删除成功");
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("菜谱删除失败");
+            }
+        } catch (Exception e) {
+            logger.error("Error deleting recipe", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("菜谱删除失败");
+        }
+    }
+
     /**
      * 新增饮食记录
      */
@@ -125,6 +210,34 @@ public class WeChatController extends BaseController
             // 没有取到值，执行插入操作
             wxMapper.insertIntake(nw);
             return AjaxResult.success("记录已添加");
+        }
+    }
+
+
+    @PostMapping("/uploadimg")
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No file uploaded.");
+        }
+
+        try {
+            // 保存文件到指定目录
+            String uploadDir = System.getProperty("user.dir") +"/static/";
+            File directory = new File(uploadDir);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            String filePath = uploadDir + file.getOriginalFilename();
+            file.transferTo(new File(filePath));
+
+            return ResponseEntity.ok("File uploaded successfully: " + filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed.");
+        }catch (Exception e) {
+            e.printStackTrace(); // 捕获其他可能的异常
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error: " + e.getMessage());
         }
     }
 
@@ -177,8 +290,7 @@ public class WeChatController extends BaseController
 
 
     @GetMapping("/AllnewMemo")
-    public AjaxResult getAllnewMemo(@RequestParam String openid)
-    {
+    public AjaxResult getAllnewMemo(@RequestParam String openid) {
         Map<String, Object> params = new HashMap<>();
         params.put("openid", openid);
 
@@ -205,8 +317,11 @@ public class WeChatController extends BaseController
             resultMap.get(date).put("Consumption", consumption);
         }
 
-        // 将合并后的结果转换为列表
-        List<Map<String, Object>> resultList = new ArrayList<>(resultMap.values());
+        // 将合并后的结果按日期排序并转换为列表
+        List<Map<String, Object>> resultList = resultMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())) // 按日期排序
+                .map(Map.Entry::getValue)
+                .collect(Collectors.toList());
 
         return AjaxResult.success(resultList);
     }
@@ -257,9 +372,8 @@ public class WeChatController extends BaseController
 
 
     /**
-     * 查询摄入和消耗
+     * 查询文章
      */
-    @Log(title = "查询摄入和消耗", businessType = BusinessType.INSERT)
     @GetMapping("/news")
     public AjaxResult getAllNews()
     {
@@ -268,5 +382,32 @@ public class WeChatController extends BaseController
 
         // 直接返回新闻列表（保持与模板一致的返回格式）
         return AjaxResult.success(newsList);
+    }
+
+    /**
+     * 新增文章
+     */
+    @PostMapping("/news")
+    public AjaxResult addNews(@RequestBody News news) {
+        int result = wxMapper.insertNews(news);
+        return result > 0 ? AjaxResult.success("新增成功") : AjaxResult.error("新增失败");
+    }
+
+    /**
+     * 更新文章
+     */
+    @PutMapping("/news/{id}")
+    public AjaxResult updateNews(@RequestBody News news) {
+        int result = wxMapper.updateNews(news);
+        return result > 0 ? AjaxResult.success("更新成功") : AjaxResult.error("更新失败");
+    }
+
+    /**
+     * 删除文章
+     */
+    @DeleteMapping("/news/{id}")
+    public AjaxResult deleteNews(@PathVariable int id) {
+        int result = wxMapper.deleteNews(id);
+        return result > 0 ? AjaxResult.success("删除成功") : AjaxResult.error("删除失败");
     }
 }
